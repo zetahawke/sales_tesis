@@ -1,25 +1,40 @@
-# README
+# Alice Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Alice's Importer website project.
 
-Things you may want to cover:
+## Description
 
-* Ruby version
+Alice's Importer are here with her own project made with RoR latest version's framework to give her clients the best way to explore her merchancy.
 
-* System dependencies
+## Installation
 
-* Configuration
+Make sure to have all the necessary stuff to start building this up.
 
-* Database creation
+### Pre Requisites
+- Ruby 2.6.1
+- Rails 6.0.3.1
+- Bundler >= 2.14
+- Postgresql >= 9.2 (pg_cli and pg gem >= 0.18)
 
-* Database initialization
+```bash
+bundle install
+rake db:create
+rake db:migrate
+```
 
-* How to run the test suite
+## Usage
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+rails s (-p port) (-b ip)
+```
 
-* Deployment instructions
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-* ...
-# project_alice
+Please make sure to update tests as appropriate.
+
+All Pull Request must be made against 'stable' branch
+
+## License
+Owned by
+[Importadora Ali](https://www.github.com/zetahawke/)
