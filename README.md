@@ -1,10 +1,10 @@
-# Alice Project
+# EVARES360
 
-Alice's Importer website project.
+EVARES360 website project.
 
 ## Description
 
-Alice's Importer are here with her own project made with RoR latest version's framework to give her clients the best way to explore her merchancy.
+EVARES360 are here with her own project made with RoR latest version's framework to give her clients the best way to explore her merchancy.
 
 ## Installation
 
