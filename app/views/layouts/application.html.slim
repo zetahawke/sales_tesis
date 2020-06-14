@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title
+      | SalesTesis
+    = csrf_meta_tags
+    = csp_meta_tag
+    meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    link[href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"]
+  body
+    - if user_signed_in?
+      = render 'layouts/body_lines/admin/navbar'
+    - else
+      = render 'layouts/body_lines/navbar'
+
+    div
+      - if notice
+        p.notice.green.white-text.m-10.p-10
+          = notice
+      - if alert
+        p.alert.deep-orange.black-text.m-10.p-10
+          = alert
+
+      .container.main-cont
+        .card.p-20.allow-overflow
+          = yield
+      = render 'layouts/body_lines/footer'

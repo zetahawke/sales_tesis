@@ -1,0 +1,21 @@
+
+.card-content
+  span.card-title Formulario de Contacto
+  hr
+  br
+  .row
+    form.col.s12
+      .row
+        .input-field.col.s6
+          input#name.validate placeholder="Nombre completo" type="text" /
+          label for="name"  Nombre completo
+        .input-field.col.s6
+          input#email.validate type="email" /
+          label for="email"  Email
+      .row
+        .input-field.col.s12
+          textarea#textarea1.materialize-textarea
+          label for="textarea1"  Texto
+
+.card-action
+  button.btn.btn-small type='submit' Enviar

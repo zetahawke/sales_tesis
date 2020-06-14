@@ -1,0 +1,19 @@
+nav
+  .nav-wrapper
+    a.brand-logo href="#{root_path}" data-turbolinks='false'  SalesTesis
+    a.sidenav-trigger data-target="sidenav-right" href="/" 
+      i.material-icons menu
+    ul.right.hide-on-med-and-down
+      li
+        = link_to 'Contacto', contact_path, data: { turbolinks: 'false' }
+      li
+        = link_to 'Log in', new_user_session_path, data: { turbolinks: 'false' }
+ul#sidenav-right.sidenav.sidenav-right
+  li
+    = link_to contact_path, data: { turbolinks: 'false' } do
+      i.material-icons chevron_right
+      | Contacto
+  li
+    = link_to new_user_session_path, class: 'login-mobile', data: { turbolinks: 'false' } do
+      i.material-icons fingerprint
+      | Ingresar

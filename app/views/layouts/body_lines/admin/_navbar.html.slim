@@ -1,0 +1,11 @@
+nav
+  .nav-wrapper
+    a.brand-logo href="#{admin_root_path}" data-turbolinks='false' Sales Tesis / Admin
+    a.sidenav-trigger data-target="mobile-demo" href="/" 
+      i.material-icons menu
+    ul.right.hide-on-med-and-down
+      li
+        = link_to 'Sign out', destroy_user_session_path, method: :delete
+ul#mobile-demo.sidenav
+  li
+    = link_to 'Sign out', destroy_user_session_path, method: :delete

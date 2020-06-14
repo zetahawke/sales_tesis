@@ -1,2 +1,28 @@
-@import 'materialize-css/dist/css/materialize';
-@import '../stylesheets/application';
+@import '../../assets/stylesheets/application';
+@import "materialize-css/sass/components/_color-variables";
+$primary-color: #8914ad !default;
+$secondary-color: #4db6ac !default;
+@import 'node_modules/materialize-css/sass/materialize.scss';
+
+body, html {
+  height:100%;
+  background-color: #eeeeee;
+}
+
+.main-cont {
+  min-height: 660px;
+}
+
+
+@media (max-width: 600px) {
+
+}
+@media (min-width: 601px) and (max-width: 992px) {
+
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+
+}
+@media (min-width: 1201px) {
+
+}

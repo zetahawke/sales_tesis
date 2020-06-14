@@ -16,4 +16,26 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import '../stylesheets/application'
 import 'materialize-css/dist/js/materialize'
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('turbolinks:load', function () {
+    var options = {};
+    var elems = document.querySelectorAll('.sidenav');
+    M.Sidenav.init(elems, options);
+    var elems = document.querySelectorAll('.sidenav-left');
+    M.Sidenav.init(elems, {
+      edge: 'left',
+      preventScrolling: false
+    });
+    var elems = document.querySelectorAll('.sidenav-right');
+    M.Sidenav.init(elems, {edge: 'right'});
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+    var elems = document.querySelectorAll('.materialboxed');
+    var instances = M.Materialbox.init(elems, options);
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems, options);
+  });
+});
