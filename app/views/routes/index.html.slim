@@ -1,0 +1,21 @@
+h1 Listing routes
+
+table
+  thead
+    tr
+      th Salesman
+      th
+      th
+      th
+
+  tbody
+    - @routes.each do |route|
+      tr
+        td = route.salesman
+        td = link_to 'Show', route
+        td = link_to 'Edit', edit_route_path(route)
+        td = link_to 'Destroy', route, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Route', new_route_path

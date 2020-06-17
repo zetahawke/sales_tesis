@@ -1,0 +1,2 @@
+class AcceptanceCriterium < ApplicationRecord
+end

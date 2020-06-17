@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Salesman:
+  = @goal.salesman
+p
+  strong Type:
+  = @goal.type
+p
+  strong Criteria:
+  = @goal.criteria
+p
+  strong Criteria value:
+  = @goal.criteria_value
+
+=> link_to 'Edit', edit_goal_path(@goal)
+'|
+=< link_to 'Back', goals_path

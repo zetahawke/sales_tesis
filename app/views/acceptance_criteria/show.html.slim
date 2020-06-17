@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @acceptance_criterium.name
+p
+  strong Criteria:
+  = @acceptance_criterium.criteria
+p
+  strong Criteria value:
+  = @acceptance_criterium.criteria_value
+
+=> link_to 'Edit', edit_acceptance_criterium_path(@acceptance_criterium)
+'|
+=< link_to 'Back', acceptance_criteria_path

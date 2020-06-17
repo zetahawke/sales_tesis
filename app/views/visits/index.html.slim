@@ -1,0 +1,23 @@
+h1 Listing visits
+
+table
+  thead
+    tr
+      th Customer
+      th Route
+      th
+      th
+      th
+
+  tbody
+    - @visits.each do |visit|
+      tr
+        td = visit.customer
+        td = visit.route
+        td = link_to 'Show', visit
+        td = link_to 'Edit', edit_visit_path(visit)
+        td = link_to 'Destroy', visit, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Visit', new_visit_path

@@ -1,0 +1,18 @@
+= form_for @acceptance_criterium do |f|
+  - if @acceptance_criterium.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@acceptance_criterium.errors.count, "error")} prohibited this acceptance_criterium from being saved:"
+      ul
+        - @acceptance_criterium.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :criteria
+    = f.text_field :criteria
+  .field
+    = f.label :criteria_value
+    = f.text_field :criteria_value
+  .actions = f.submit

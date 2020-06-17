@@ -1,0 +1,15 @@
+= form_for @satisfaction_questionary do |f|
+  - if @satisfaction_questionary.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@satisfaction_questionary.errors.count, "error")} prohibited this satisfaction_questionary from being saved:"
+      ul
+        - @satisfaction_questionary.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :visit
+    = f.text_field :visit
+  .field
+    = f.label :questions
+    = f.number_field :questions
+  .actions = f.submit

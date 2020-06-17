@@ -1,0 +1,23 @@
+h1 Listing satisfaction_questionaries
+
+table
+  thead
+    tr
+      th Visit
+      th Questions
+      th
+      th
+      th
+
+  tbody
+    - @satisfaction_questionaries.each do |satisfaction_questionary|
+      tr
+        td = satisfaction_questionary.visit
+        td = satisfaction_questionary.questions
+        td = link_to 'Show', satisfaction_questionary
+        td = link_to 'Edit', edit_satisfaction_questionary_path(satisfaction_questionary)
+        td = link_to 'Destroy', satisfaction_questionary, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Satisfaction questionary', new_satisfaction_questionary_path

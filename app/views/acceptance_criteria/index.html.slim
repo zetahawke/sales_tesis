@@ -1,0 +1,25 @@
+h1 Listing acceptance_criteria
+
+table
+  thead
+    tr
+      th Name
+      th Criteria
+      th Criteria value
+      th
+      th
+      th
+
+  tbody
+    - @acceptance_criteria.each do |acceptance_criterium|
+      tr
+        td = acceptance_criterium.name
+        td = acceptance_criterium.criteria
+        td = acceptance_criterium.criteria_value
+        td = link_to 'Show', acceptance_criterium
+        td = link_to 'Edit', edit_acceptance_criterium_path(acceptance_criterium)
+        td = link_to 'Destroy', acceptance_criterium, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Acceptance criterium', new_acceptance_criterium_path
