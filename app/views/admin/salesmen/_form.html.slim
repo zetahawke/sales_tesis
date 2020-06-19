@@ -1,4 +1,4 @@
-= form_for @salesman do |f|
+= form_for admin_salesman_path(@salesman) do |f|
   - if @salesman.errors.any?
     #error_explanation
       h2 = "#{pluralize(@salesman.errors.count, "error")} prohibited this salesman from being saved:"

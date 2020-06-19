@@ -14,10 +14,10 @@ table
       tr
         td = customer.name
         td = customer.dni
-        td = link_to 'Show', customer
-        td = link_to 'Edit', edit_customer_path(customer)
-        td = link_to 'Destroy', customer, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Show', admin_customer(customer)
+        td = link_to 'Edit', edit_admin_customer_path(customer)
+        td = link_to 'Destroy', admin_customer(customer), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Customer', new_customer_path
+= link_to 'New Customer', new_admin_customer_path
