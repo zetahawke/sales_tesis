@@ -13,6 +13,33 @@ body, html {
   min-height: 660px;
 }
 
+.btn-default {
+  color: #000000 !important;
+  background-color: #eeeeee !important;
+}
+
+.sidebar {
+  transform: translateX(0px);
+  position: relative;
+  width: inherit;
+}
+
+.allow-overflow {
+  overflow: auto;
+}
+
+.card.small .card-image + .card-content, .card.medium .card-image + .card-content, .card.large .card-image + .card-content {
+  max-height: 58%;
+}
+
+.card .card-content .card-title {
+  font-size: 1.5rem;
+}
+
+.login-mobile{
+  position: absolute;
+  bottom: 60px;
+}
 
 @media (max-width: 600px) {
 

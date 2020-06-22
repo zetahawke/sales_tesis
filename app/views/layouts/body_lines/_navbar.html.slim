@@ -7,7 +7,9 @@ nav
       li
         = link_to 'Contacto', contact_path, data: { turbolinks: 'false' }
       li
-        = link_to 'Log in', new_user_session_path, data: { turbolinks: 'false' }
+        = link_to new_user_session_path, data: { turbolinks: 'false' } do
+          i.material-icons person_outline
+          | Log in
 ul#sidenav-right.sidenav.sidenav-right
   li
     = link_to contact_path, data: { turbolinks: 'false' } do

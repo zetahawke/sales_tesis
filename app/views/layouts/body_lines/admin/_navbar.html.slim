@@ -1,11 +1,18 @@
 nav
   .nav-wrapper
-    a.brand-logo href="#{admin_root_path}" data-turbolinks='false' EVARES360 / Admin
-    a.sidenav-trigger data-target="mobile-demo" href="/" 
+    a.brand-logo href="#{admin_root_path}" data-turbolinks='false' EVARES360
+    a.sidenav-trigger data-target="sidenav-right" href="/" 
       i.material-icons menu
     ul.right.hide-on-med-and-down
       li
         = link_to 'Sign out', destroy_user_session_path, method: :delete
-ul#mobile-demo.sidenav
+ul#sidenav-right.sidenav.sidenav-right
+  = render 'layouts/body_lines/admin/menu_items'
   li
-    = link_to 'Sign out', destroy_user_session_path, method: :delete
+    = link_to contact_path, data: { turbolinks: 'false' } do
+      i.material-icons chevron_right
+      | Contacto
+  li
+    = link_to destroy_user_session_path, class: 'login-mobile', method: :delete, data: { turbolinks: 'false' } do
+      i.material-icons fingerprint
+      | Salir

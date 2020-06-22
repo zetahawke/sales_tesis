@@ -23,7 +23,17 @@ html
         p.alert.deep-orange.black-text.m-10.p-10
           = alert
 
-      .container.main-cont
-        .card.p-20.allow-overflow
-          = yield
+      - unless user_signed_in?
+        .container.main-cont
+          .card.p-20.allow-overflow
+            = yield
+      - else
+        .row.main-cont
+          .col.l2.hide-on-med-and-down
+            .card
+              = render 'layouts/body_lines/admin/sidenav'
+          .col.s12.m12.l10
+            .card.p-20.allow-overflow
+              = yield
+
       = render 'layouts/body_lines/footer'

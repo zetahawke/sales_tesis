@@ -1,0 +1,32 @@
+li class="#{'active' if params[:controller].include?('customers')}"
+  = link_to admin_customers_path, data: { turbolinks: 'false' } do
+    i.material-icons chevron_right
+    | Clientes
+li class="#{'active' if params[:controller].include?('salesmen')}"
+  = link_to admin_salesmen_path, data: { turbolinks: 'false' } do
+    i.material-icons chevron_right
+    | Vendedores
+li class="#{'active' if params[:controller].include?('routes')}"
+  = link_to admin_routes_path, data: { turbolinks: 'false' } do
+    i.material-icons chevron_right
+    | Rutas
+li class="#{'active' if params[:controller].include?('visits')}"
+  = link_to admin_visits_path, data: { turbolinks: 'false' } do
+    i.material-icons chevron_right
+    | Visitas
+li class="#{'active' if params[:controller].include?('satisfaction_questionaries')}"
+  = link_to admin_satisfaction_questionaries_path, data: { turbolinks: 'false' } do
+    i.material-icons chevron_right
+    | Encuestas
+li class="#{'active' if params[:controller].include?('questions')}"
+  = link_to admin_questions_path, data: { turbolinks: 'false' } do
+    i.material-icons chevron_right
+    | Preguntas
+li class="#{'active' if params[:controller].include?('acceptance_criteria')}"
+  = link_to admin_acceptance_criteria_path, data: { turbolinks: 'false' } do
+    i.material-icons chevron_right
+    | Criterios
+li class="#{'active' if params[:controller].include?('goals')}"
+  = link_to admin_goals_path, data: { turbolinks: 'false' } do
+    i.material-icons chevron_right
+    | Metas
