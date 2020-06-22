@@ -1,6 +1,7 @@
 module Admin
   class GoalsController < ApplicationController
     before_action :set_goal, only: [:show, :edit, :update, :destroy]
+    before_action :set_form_url, only: [:edit, :new]
   
     # GET /goals
     # GET /goals.json
@@ -66,6 +67,10 @@ module Admin
       # Use callbacks to share common setup or constraints between actions.
       def set_goal
         @goal = Goal.find(params[:id])
+      end
+  
+      def set_form_url
+        @url = params[:action] == 'edit' ? admin_goal_path(@goal) : admin_goals_path
       end
   
       # Only allow a list of trusted parameters through.

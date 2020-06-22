@@ -1,6 +1,7 @@
 module Admin
   class QuestionsController < ApplicationController
     before_action :set_question, only: [:show, :edit, :update, :destroy]
+    before_action :set_form_url, only: [:edit, :new]
   
     # GET /questions
     # GET /questions.json
@@ -66,6 +67,10 @@ module Admin
       # Use callbacks to share common setup or constraints between actions.
       def set_question
         @question = Question.find(params[:id])
+      end
+
+      def set_form_url
+        @url = params[:action] == 'edit' ? admin_question_path(@question) : admin_questions_path
       end
   
       # Only allow a list of trusted parameters through.

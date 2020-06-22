@@ -1,6 +1,7 @@
 module Admin
   class SalesmenController < ApplicationController
     before_action :set_salesman, only: [:show, :edit, :update, :destroy]
+    before_action :set_form_url, only: [:edit, :new]
   
     # GET /salesmen
     # GET /salesmen.json
@@ -66,6 +67,10 @@ module Admin
       # Use callbacks to share common setup or constraints between actions.
       def set_salesman
         @salesman = Salesman.find(params[:id])
+      end
+  
+      def set_form_url
+        @url = params[:action] == 'edit' ? admin_salesman_path(@salesman) : admin_salesmen_path
       end
   
       # Only allow a list of trusted parameters through.

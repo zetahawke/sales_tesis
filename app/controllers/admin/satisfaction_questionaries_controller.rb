@@ -1,6 +1,7 @@
 module Admin
   class SatisfactionQuestionariesController < ApplicationController
     before_action :set_satisfaction_questionary, only: [:show, :edit, :update, :destroy]
+    before_action :set_form_url, only: [:edit, :new]
   
     # GET /satisfaction_questionaries
     # GET /satisfaction_questionaries.json
@@ -66,6 +67,10 @@ module Admin
       # Use callbacks to share common setup or constraints between actions.
       def set_satisfaction_questionary
         @satisfaction_questionary = SatisfactionQuestionary.find(params[:id])
+      end
+  
+      def set_form_url
+        @url = params[:action] == 'edit' ? admin_satisfaction_questionary_path(@satisfaction_questionary) : admin_satisfaction_questionaries_path
       end
   
       # Only allow a list of trusted parameters through.

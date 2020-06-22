@@ -1,6 +1,7 @@
 module Admin
   class RoutesController < ApplicationController
     before_action :set_route, only: [:show, :edit, :update, :destroy]
+    before_action :set_form_url, only: [:edit, :new]
   
     # GET /routes
     # GET /routes.json
@@ -66,6 +67,10 @@ module Admin
       # Use callbacks to share common setup or constraints between actions.
       def set_route
         @route = Route.find(params[:id])
+      end
+
+      def set_form_url
+        @url = params[:action] == 'edit' ? admin_route_path(@route) : admin_routes_path
       end
   
       # Only allow a list of trusted parameters through.

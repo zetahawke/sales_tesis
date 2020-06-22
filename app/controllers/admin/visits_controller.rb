@@ -1,6 +1,7 @@
 module Admin
   class VisitsController < ApplicationController
     before_action :set_visit, only: [:show, :edit, :update, :destroy]
+    before_action :set_form_url, only: [:edit, :new]
   
     # GET /visits
     # GET /visits.json
@@ -67,7 +68,11 @@ module Admin
       def set_visit
         @visit = Visit.find(params[:id])
       end
-  
+
+      def set_form_url
+        @url = params[:action] == 'edit' ? admin_visit_path(@visit) : admin_visits_path
+      end
+
       # Only allow a list of trusted parameters through.
       def visit_params
         params.require(:visit).permit(:customer_id, :route_id)
