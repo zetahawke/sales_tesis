@@ -1,5 +1,5 @@
 module Admin
-  class VisitsController < ApplicationController
+  class VisitsController < AdminController
     before_action :set_visit, only: [:show, :edit, :update, :destroy]
     before_action :set_form_url, only: [:edit, :new]
   

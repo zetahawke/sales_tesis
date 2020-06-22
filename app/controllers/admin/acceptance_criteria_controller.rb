@@ -1,5 +1,5 @@
 module Admin
-  class AcceptanceCriteriaController < ApplicationController
+  class AcceptanceCriteriaController < AdminController
     before_action :set_acceptance_criterium, only: [:show, :edit, :update, :destroy]
     before_action :set_form_url, only: [:edit, :new]
   

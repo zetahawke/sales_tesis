@@ -1,5 +1,5 @@
 module Admin
-  class GoalsController < ApplicationController
+  class GoalsController < AdminController
     before_action :set_goal, only: [:show, :edit, :update, :destroy]
     before_action :set_form_url, only: [:edit, :new]
   

@@ -1,5 +1,5 @@
 module Admin
-  class SatisfactionQuestionariesController < ApplicationController
+  class SatisfactionQuestionariesController < AdminController
     before_action :set_satisfaction_questionary, only: [:show, :edit, :update, :destroy]
     before_action :set_form_url, only: [:edit, :new]
   

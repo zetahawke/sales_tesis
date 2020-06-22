@@ -1,5 +1,5 @@
 module Admin
-  class RoutesController < ApplicationController
+  class RoutesController < AdminController
     before_action :set_route, only: [:show, :edit, :update, :destroy]
     before_action :set_form_url, only: [:edit, :new]
   

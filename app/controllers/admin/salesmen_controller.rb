@@ -1,5 +1,5 @@
 module Admin
-  class SalesmenController < ApplicationController
+  class SalesmenController < AdminController
     before_action :set_salesman, only: [:show, :edit, :update, :destroy]
     before_action :set_form_url, only: [:edit, :new]
   
