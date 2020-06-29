@@ -1,6 +1,7 @@
 class SatisfactionQuestionary < ApplicationRecord
   belongs_to :visit
   has_one :customer, through: :visit
+  has_many :answers
 
   after_create :generate_public_token
   after_create :send_notification

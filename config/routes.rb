@@ -15,4 +15,10 @@ Rails.application.routes.draw do
     resources :goals
     resources :salesmen
   end
+
+  namespace :public do
+    get '/sq', to: 'satisfaction_questionaries#by_token'
+
+    resources :answer, only: [:create, :update] 
+  end
 end
