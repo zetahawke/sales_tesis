@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_29_044811) do
+ActiveRecord::Schema.define(version: 2020_06_29_202021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2020_06_29_044811) do
     t.string "dni"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
   end
 
   create_table "goals", force: :cascade do |t|
@@ -123,6 +124,7 @@ ActiveRecord::Schema.define(version: 2020_06_29_044811) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
   end
 
   create_table "satisfaction_questionaries", force: :cascade do |t|
@@ -130,6 +132,7 @@ ActiveRecord::Schema.define(version: 2020_06_29_044811) do
     t.integer "questions", array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "public_token"
     t.index ["visit_id"], name: "index_satisfaction_questionaries_on_visit_id"
   end
 

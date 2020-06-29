@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<style type="text/css">
+  body, table {
+    font-family: Ubuntu, Helvetica, Arial, sans-serif;
+  }
+  th, td {
+    border: 1px solid black;
+  }
+</style>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <h1>
+    Hola <%=  @customer.name&.capitalize %>
+  </h1>
+  <br />
+  <p>  
+    Te invitamos a responder una breve encuesta de satisfacción relacionada a la visita efectuada por nuestro vendedor <%= @visit.salesman.name&.capitalize %>
+    el día <small><%= @visit.created_at.to_date %></small> en el siguiente
+    <%= link_to 'Link', @sq.public_url %>
+  </p>
+</body>
+</html>

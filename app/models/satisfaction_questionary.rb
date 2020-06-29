@@ -1,5 +1,9 @@
 class SatisfactionQuestionary < ApplicationRecord
   belongs_to :visit
+  has_one :customer, through: :visit
+
+  after_create :generate_public_token
+  after_create :send_notification
 
   def found_questions
     Question.where(id: questions || [])
@@ -33,5 +37,18 @@ class SatisfactionQuestionary < ApplicationRecord
 
   def accomplished
     accomplishment_percent >= 80
+  end
+
+  def generate_public_token
+    token = Devise.friendly_token
+    update_columns(public_token: token)
+  end
+
+  def send_notification
+    NotificationMailer.customer_questionary(customer, visit, self).deliver_now
+  end
+
+  def public_url
+    "#{Rails.configuration.public_url}/public/sq?public_token=#{public_token}"
   end
 end

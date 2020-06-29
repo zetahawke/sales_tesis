@@ -1,0 +1,5 @@
+Hola <%= @customer.name&.capitalize %>
+
+Te invitamos a responder una breve encuesta de satisfacción relacionada a la visita efectuada por nuestro vendedor <%= @visit.salesman.name&.capitalize %>
+el día <small><%= @visit.created_at.to_date %></small> en el siguiente
+<%= link_to 'Link', @sq.public_url %>
