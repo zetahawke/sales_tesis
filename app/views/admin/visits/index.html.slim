@@ -12,8 +12,11 @@ table
   tbody
     - @visits.each do |visit|
       tr
-        td = visit.customer
-        td = visit.route
+        td = visit.customer&.name
+        td 
+          = visit.route&.salesman.name
+          |  ruta: 
+          = visit.route.id
         td = link_to 'Show', admin_visit_path(visit)
         td = link_to 'Edit', edit_admin_visit_path(visit)
         td = link_to 'Destroy', admin_visit_path(visit), data: { confirm: 'Are you sure?' }, method: :delete

@@ -1,4 +1,4 @@
-= form_with(model: @salesman, local: true, url: @url) do |f|
+= form_for(@salesman, local: true, url: @url) do |f|
   - if @salesman.errors.any?
     #error_explanation
       h2 = "#{pluralize(@salesman.errors.count, "error")} prohibited this salesman from being saved:"
@@ -6,7 +6,7 @@
         - @salesman.errors.full_messages.each do |message|
           li = message
 
-  .field
+  .input-field
     = f.label :name
     = f.text_field :name
   .actions

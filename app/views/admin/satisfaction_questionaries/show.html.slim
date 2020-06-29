@@ -1,6 +1,8 @@
 h5
   strong Visit: 
-  = @satisfaction_questionary.visit
+  = @satisfaction_questionary.visit&.customer.name
+  |  visita: 
+  = @satisfaction_questionary.visit.id
 p
   strong Questions: 
   = @satisfaction_questionary.questions

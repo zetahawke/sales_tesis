@@ -75,7 +75,7 @@ module Admin
   
       # Only allow a list of trusted parameters through.
       def satisfaction_questionary_params
-        params.require(:satisfaction_questionary).permit(:visit_id, :questions)
+        params.require(:satisfaction_questionary).permit(:visit_id, questions: [])
       end
   end
 end

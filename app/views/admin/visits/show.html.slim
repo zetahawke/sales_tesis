@@ -1,9 +1,10 @@
 h5
   strong Customer: 
-  = @visit.customer
+  = @visit.customer&.name
 p
   strong Route: 
-  = @visit.route
+  = @visit.route&.salesman&.name
+  |  Route
 
 => link_to 'Edit', edit_admin_visit_path(@visit), class: 'btn btn-primary'
 '|

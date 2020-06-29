@@ -1,4 +1,4 @@
-= form_with(model: @satisfaction_questionary, local: true, url: @url) do |f|
+= form_for(@satisfaction_questionary, local: true, url: @url) do |f|
   - if @satisfaction_questionary.errors.any?
     #error_explanation
       h2 = "#{pluralize(@satisfaction_questionary.errors.count, "error")} prohibited this satisfaction_questionary from being saved:"
@@ -6,12 +6,15 @@
         - @satisfaction_questionary.errors.full_messages.each do |message|
           li = message
 
-  .field
+  .input-field
     = f.label :visit
-    = f.text_field :visit
-  .field
+    = f.select :visit_id, options_for_select(Visit.joins(:customer).select('customer.name, visit.id').pluck(:name, :id), @satisfaction_questionary.visit_id)
+  .input-field
+    select multiple='' name='satisfaction_questionary[questions][]' id='satisfaction_questionary_questions'
+      option value="" disabled='disabled' Elija criterios
+      - Question.all.each do |q|
+        = "<option value='#{q.id}' #{'selected' if @satisfaction_questionary.questions && @satisfaction_questionary.questions.include?(q.id)}>#{q.name}</option>".html_safe
     = f.label :questions
-    = f.number_field :questions
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary'
     = link_to 'Back', admin_satisfaction_questionaries_path, class: 'btn btn-default'

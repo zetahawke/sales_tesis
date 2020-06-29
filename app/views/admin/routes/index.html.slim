@@ -11,7 +11,7 @@ table
   tbody
     - @routes.each do |route|
       tr
-        td = route.salesman
+        td = route.salesman&.name
         td = link_to 'Show', admin_route_path(route)
         td = link_to 'Edit', edit_admin_route_path(route)
         td = link_to 'Destroy', admin_route_path(route), data: { confirm: 'Are you sure?' }, method: :delete

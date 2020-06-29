@@ -75,7 +75,7 @@ module Admin
   
       # Only allow a list of trusted parameters through.
       def question_params
-        params.require(:question).permit(:name, :description, :acceptance_criterias)
+        params.require(:question).permit(:name, :description, acceptance_criterias: [])
       end
   end
 end

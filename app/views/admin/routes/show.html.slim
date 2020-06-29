@@ -1,6 +1,6 @@
 h5
   strong Salesman: 
-  = @route.salesman
+  = @route.salesman&.name
 
 => link_to 'Edit', edit_admin_route_path(@route), class: 'btn btn-primary'
 '|

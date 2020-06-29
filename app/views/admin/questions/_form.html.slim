@@ -1,4 +1,4 @@
-= form_with(model: @question, local: true, url: @url) do |f|
+= form_for(@question, local: true, url: @url) do |f|
   - if @question.errors.any?
     #error_explanation
       h2 = "#{pluralize(@question.errors.count, "error")} prohibited this question from being saved:"
@@ -6,15 +6,18 @@
         - @question.errors.full_messages.each do |message|
           li = message
 
-  .field
+  .input-field
     = f.label :name
     = f.text_field :name
-  .field
+  .input-field
     = f.label :description
     = f.text_field :description
-  .field
+  .input-field
+    select multiple='' name='question[acceptance_criterias][]' id='question_acceptance_criterias'
+      option value="" disabled='disabled' Elija criterios
+      - AcceptanceCriterium.all.each do |ac|
+        = "<option value='#{ac.id}' #{'selected' if @question.acceptance_criterias && @question.acceptance_criterias.include?(ac.id)}>#{ac.name}</option>".html_safe
     = f.label :acceptance_criterias
-    = f.number_field :acceptance_criterias
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary'
     = link_to 'Back', admin_questions_path, class: 'btn btn-default'

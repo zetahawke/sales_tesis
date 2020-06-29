@@ -1,4 +1,4 @@
-= form_with(model: @acceptance_criterium, local: true, url: @url) do |f|
+= form_for(@acceptance_criterium, local: true, url: @url) do |f|
   - if @acceptance_criterium.errors.any?
     #error_explanation
       h2 = "#{pluralize(@acceptance_criterium.errors.count, "error")} prohibited this acceptance_criterium from being saved:"
@@ -6,15 +6,18 @@
         - @acceptance_criterium.errors.full_messages.each do |message|
           li = message
 
-  .field
+  .input-field
     = f.label :name
     = f.text_field :name
-  .field
+  .input-field
     = f.label :criteria
     = f.text_field :criteria
-  .field
+  .input-field
     = f.label :criteria_value
     = f.text_field :criteria_value
+  .input-field
+    = f.label :hit_value
+    = f.number_field :hit_value
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary'
     = link_to 'Back', admin_acceptance_criteria_path, class: 'btn btn-default'
