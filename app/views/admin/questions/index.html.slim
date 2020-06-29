@@ -16,10 +16,10 @@ table
         td = question.name
         td = question.description
         td = question.acceptance_criterias
-        td = link_to 'Show', admin_question(question)
+        td = link_to 'Show', admin_question_path(question)
         td = link_to 'Edit', edit_admin_question_path(question)
-        td = link_to 'Destroy', admin_question(question), data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Destroy', admin_question_path(question), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Question', new_admin_question_path
+= link_to 'New Question', new_admin_question_path, class: 'btn btn-primary'

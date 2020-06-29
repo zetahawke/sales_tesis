@@ -30,7 +30,7 @@ module Admin
   
       respond_to do |format|
         if @route.save
-          format.html { redirect_to @route, notice: 'Route was successfully created.' }
+          format.html { redirect_to admin_route_path(@route), notice: 'Route was successfully created.' }
           format.json { render :show, status: :created, location: @route }
         else
           format.html { render :new }
@@ -44,7 +44,7 @@ module Admin
     def update
       respond_to do |format|
         if @route.update(route_params)
-          format.html { redirect_to @route, notice: 'Route was successfully updated.' }
+          format.html { redirect_to admin_route_path(@route), notice: 'Route was successfully updated.' }
           format.json { render :show, status: :ok, location: @route }
         else
           format.html { render :edit }
@@ -58,7 +58,7 @@ module Admin
     def destroy
       @route.destroy
       respond_to do |format|
-        format.html { redirect_to routes_url, notice: 'Route was successfully destroyed.' }
+        format.html { redirect_to admin_routes_url, notice: 'Route was successfully destroyed.' }
         format.json { head :no_content }
       end
     end

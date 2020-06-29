@@ -30,7 +30,7 @@ module Admin
   
       respond_to do |format|
         if @acceptance_criterium.save
-          format.html { redirect_to @acceptance_criterium, notice: 'Acceptance criterium was successfully created.' }
+          format.html { redirect_to admin_acceptance_criterium_path(@acceptance_criterium), notice: 'Acceptance criterium was successfully created.' }
           format.json { render :show, status: :created, location: @acceptance_criterium }
         else
           format.html { render :new }
@@ -44,7 +44,7 @@ module Admin
     def update
       respond_to do |format|
         if @acceptance_criterium.update(acceptance_criterium_params)
-          format.html { redirect_to @acceptance_criterium, notice: 'Acceptance criterium was successfully updated.' }
+          format.html { redirect_to admin_acceptance_criterium_path(@acceptance_criterium), notice: 'Acceptance criterium was successfully updated.' }
           format.json { render :show, status: :ok, location: @acceptance_criterium }
         else
           format.html { render :edit }
@@ -58,7 +58,7 @@ module Admin
     def destroy
       @acceptance_criterium.destroy
       respond_to do |format|
-        format.html { redirect_to acceptance_criteria_url, notice: 'Acceptance criterium was successfully destroyed.' }
+        format.html { redirect_to admin_acceptance_criteria_url, notice: 'Acceptance criterium was successfully destroyed.' }
         format.json { head :no_content }
       end
     end

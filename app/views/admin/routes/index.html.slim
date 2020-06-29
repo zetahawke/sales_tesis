@@ -12,10 +12,10 @@ table
     - @routes.each do |route|
       tr
         td = route.salesman
-        td = link_to 'Show', admin_route(route)
+        td = link_to 'Show', admin_route_path(route)
         td = link_to 'Edit', edit_admin_route_path(route)
-        td = link_to 'Destroy', admin_route, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Destroy', admin_route_path(route), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Route', new_admin_route_path
+= link_to 'New Route', new_admin_route_path, class: 'btn btn-primary'

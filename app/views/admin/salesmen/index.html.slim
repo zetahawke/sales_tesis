@@ -12,10 +12,10 @@ table
     - @salesmen.each do |salesman|
       tr
         td = salesman.name
-        td = link_to 'Show', admin_salesman(salesman)
+        td = link_to 'Show', admin_salesman_path(salesman)
         td = link_to 'Edit', edit_admin_salesman_path(salesman)
-        td = link_to 'Destroy', admin_salesman(salesman), data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Destroy', admin_salesman_path(salesman), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Salesman', new_admin_salesman_path
+= link_to 'New Salesman', new_admin_salesman_path, class: 'btn btn-primary'

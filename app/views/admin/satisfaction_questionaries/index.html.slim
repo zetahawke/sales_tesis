@@ -14,10 +14,10 @@ table
       tr
         td = satisfaction_questionary.visit
         td = satisfaction_questionary.questions
-        td = link_to 'Show', admin_satisfaction_questionary(satisfaction_questionary)
+        td = link_to 'Show', admin_satisfaction_questionary_path(satisfaction_questionary)
         td = link_to 'Edit', edit_admin_satisfaction_questionary_path(satisfaction_questionary)
-        td = link_to 'Destroy', admin_satisfaction_questionary(satisfaction_questionary), data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Destroy', admin_satisfaction_questionary_path(satisfaction_questionary), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Satisfaction questionary', new_admin_satisfaction_questionary_path
+= link_to 'New Satisfaction questionary', new_admin_satisfaction_questionary_path, class: 'btn btn-primary'

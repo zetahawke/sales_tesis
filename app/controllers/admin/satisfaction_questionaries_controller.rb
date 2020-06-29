@@ -30,7 +30,7 @@ module Admin
   
       respond_to do |format|
         if @satisfaction_questionary.save
-          format.html { redirect_to @satisfaction_questionary, notice: 'Satisfaction questionary was successfully created.' }
+          format.html { redirect_to admin_satisfaction_questionary_path(@satisfaction_questionary), notice: 'Satisfaction questionary was successfully created.' }
           format.json { render :show, status: :created, location: @satisfaction_questionary }
         else
           format.html { render :new }
@@ -44,7 +44,7 @@ module Admin
     def update
       respond_to do |format|
         if @satisfaction_questionary.update(satisfaction_questionary_params)
-          format.html { redirect_to @satisfaction_questionary, notice: 'Satisfaction questionary was successfully updated.' }
+          format.html { redirect_to admin_satisfaction_questionary_path(@satisfaction_questionary), notice: 'Satisfaction questionary was successfully updated.' }
           format.json { render :show, status: :ok, location: @satisfaction_questionary }
         else
           format.html { render :edit }
@@ -58,7 +58,7 @@ module Admin
     def destroy
       @satisfaction_questionary.destroy
       respond_to do |format|
-        format.html { redirect_to satisfaction_questionaries_url, notice: 'Satisfaction questionary was successfully destroyed.' }
+        format.html { redirect_to admin_satisfaction_questionaries_url, notice: 'Satisfaction questionary was successfully destroyed.' }
         format.json { head :no_content }
       end
     end

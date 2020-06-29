@@ -30,7 +30,7 @@ module Admin
   
       respond_to do |format|
         if @visit.save
-          format.html { redirect_to @visit, notice: 'Visit was successfully created.' }
+          format.html { redirect_to admin_visit_path(@visit), notice: 'Visit was successfully created.' }
           format.json { render :show, status: :created, location: @visit }
         else
           format.html { render :new }
@@ -44,7 +44,7 @@ module Admin
     def update
       respond_to do |format|
         if @visit.update(visit_params)
-          format.html { redirect_to @visit, notice: 'Visit was successfully updated.' }
+          format.html { redirect_to admin_visit_path(@visit), notice: 'Visit was successfully updated.' }
           format.json { render :show, status: :ok, location: @visit }
         else
           format.html { render :edit }
@@ -58,7 +58,7 @@ module Admin
     def destroy
       @visit.destroy
       respond_to do |format|
-        format.html { redirect_to visits_url, notice: 'Visit was successfully destroyed.' }
+        format.html { redirect_to admin_visits_url, notice: 'Visit was successfully destroyed.' }
         format.json { head :no_content }
       end
     end

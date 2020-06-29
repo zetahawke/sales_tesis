@@ -14,10 +14,10 @@ table
       tr
         td = visit.customer
         td = visit.route
-        td = link_to 'Show', admin_visit(visit)
+        td = link_to 'Show', admin_visit_path(visit)
         td = link_to 'Edit', edit_admin_visit_path(visit)
-        td = link_to 'Destroy', admin_visit(visit), data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Destroy', admin_visit_path(visit), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Visit', new_admin_visit_path
+= link_to 'New Visit', new_admin_visit_path, class: 'btn btn-primary'

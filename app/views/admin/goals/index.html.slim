@@ -18,10 +18,10 @@ table
         td = goal.type
         td = goal.criteria
         td = goal.criteria_value
-        td = link_to 'Show', admin_goal(goal)
+        td = link_to 'Show', admin_goal_path(goal)
         td = link_to 'Edit', edit_admin_goal_path(goal)
-        td = link_to 'Destroy', admin_goal(goal), data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Destroy', admin_goal_path(goal), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Goal', new_admin_goal_path
+= link_to 'New Goal', new_admin_goal_path, class: 'btn btn-primary'
