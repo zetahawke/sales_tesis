@@ -1,8 +1,5 @@
-h1 Editing visit
+h5 Editing visit
 
-== render 'form'
+= render 'form'
 
-=> link_to 'Show', @visit
-'|
-=< link_to 'Back', visits_path
-
+= link_to 'Show', admin_visit_path(@visit), class: 'btn btn-default'

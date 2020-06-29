@@ -1,12 +1,10 @@
-p#notice = notice
-
-p
-  strong Customer:
+h5
+  strong Customer: 
   = @visit.customer
 p
-  strong Route:
+  strong Route: 
   = @visit.route
 
-=> link_to 'Edit', edit_admin_visit_path(@visit)
+=> link_to 'Edit', edit_admin_visit_path(@visit), class: 'btn btn-primary'
 '|
-=< link_to 'Back', admin_visits_path
+=< link_to 'Back', admin_visits_path, class: 'btn btn-default'

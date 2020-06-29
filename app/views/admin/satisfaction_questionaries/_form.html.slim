@@ -12,4 +12,6 @@
   .field
     = f.label :questions
     = f.number_field :questions
-  .actions = f.submit, class: 'btn btn-primary'
+  .actions
+    = f.submit 'Guardar', class: 'btn btn-primary'
+    = link_to 'Back', admin_satisfaction_questionaries_path, class: 'btn btn-default'

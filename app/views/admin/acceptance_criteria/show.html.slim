@@ -1,15 +1,13 @@
-p#notice = notice
-
-p
-  strong Name:
+h5
+  strong Name: 
   = @acceptance_criterium.name
 p
-  strong Criteria:
+  strong Criteria: 
   = @acceptance_criterium.criteria
 p
-  strong Criteria value:
+  strong Criteria value: 
   = @acceptance_criterium.criteria_value
 
-=> link_to 'Edit', edit_admin_acceptance_criterium_path(@acceptance_criterium)
+=> link_to 'Edit', edit_admin_acceptance_criterium_path(@acceptance_criterium), class: 'btn btn-primary'
 '|
-=< link_to 'Back', admin_acceptance_criteria_path
+=< link_to 'Back', admin_acceptance_criteria_path, class: 'btn btn-default'

@@ -1,8 +1,5 @@
-h1 Editing salesman
+h5 Editing salesman
 
-== render 'form'
+= render 'form'
 
-=> link_to 'Show', @salesman
-'|
-=< link_to 'Back', salesmen_path
-
+= link_to 'Show', admin_salesman_path(@salesman), class: 'btn btn-default'

@@ -15,4 +15,6 @@
   .field
     = f.label :acceptance_criterias
     = f.number_field :acceptance_criterias
-  .actions = f.submit, class: 'btn btn-primary'
+  .actions
+    = f.submit 'Guardar', class: 'btn btn-primary'
+    = link_to 'Back', admin_questions_path, class: 'btn btn-default'

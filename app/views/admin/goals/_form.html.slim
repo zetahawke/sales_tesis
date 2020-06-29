@@ -18,4 +18,6 @@
   .field
     = f.label :criteria_value
     = f.text_field :criteria_value
-  .actions = f.submit, class: 'btn btn-primary'
+  .actions
+    = f.submit 'Guardar', class: 'btn btn-primary'
+    = link_to 'Back', admin_goals_path, class: 'btn btn-default'

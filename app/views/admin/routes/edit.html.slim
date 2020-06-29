@@ -1,8 +1,5 @@
-h1 Editing route
+h5 Editing route
 
-== render 'form'
+= render 'form'
 
-=> link_to 'Show', @route
-'|
-=< link_to 'Back', routes_path
-
+= link_to 'Show', admin_route_path(@route), class: 'btn btn-default'

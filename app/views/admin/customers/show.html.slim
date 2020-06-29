@@ -1,12 +1,10 @@
-p#notice = notice
-
-p
-  strong Name:
+h5
+  strong Name: 
   = @customer.name
 p
-  strong Dni:
+  strong Dni: 
   = @customer.dni
 
-=> link_to 'Edit', edit_admin_customer_path(@customer)
+=> link_to 'Edit', edit_admin_customer_path(@customer), class: 'btn btn-primary'
 '|
-=< link_to 'Back', admin_customers_path
+=< link_to 'Back', admin_customers_path, class: 'btn btn-default'
