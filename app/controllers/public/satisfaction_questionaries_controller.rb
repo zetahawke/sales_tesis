@@ -21,7 +21,7 @@ module Public
     def set_step
       @step =
         if params[:step]
-          params[:step]
+          params[:step].try(:to_i)
         else
           if @satisfaction_questionary.answers.blank?
             0
@@ -49,11 +49,11 @@ module Public
 
     def set_progress_bar
       @total_questions = @satisfaction_questionary.questions.size
-      @progression = (100 / @total_questions) * (step + 1)
+      @progression = (100 / @total_questions) * (@step + 1)
     end
 
     def set_form_url
-      @url = @answer.id.blank? ? public_answer_index_path : public_answer_path(@answer)
+      @url = @answer.id.blank? ? public_answers_path(step: @step) : public_answer_path(id: @answer.id, step: @step)
     end
   end
 end

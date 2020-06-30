@@ -1,35 +1,38 @@
 .progress
-  .determinate style="width: #{@progress}%"
+  .determinate style="width: #{@progression}%"
 
 h5
   | Cuestionario de Satisfacción 
   .small
     | paso 
     = @step + 1
-    | de 
+    |  de 
     = @total_questions
 
-.card
-  .card-content
-    span.card-title
-      = @question.name
-    p
-      = @question.description
-  .card-actions
-    = form_for(@answer, local: true, url: @url) do |f|
-      - if @goal.errors.any?
-        #error_explanation
-          h2 = "#{pluralize(@goal.errors.count, "error")} prohibited this goal from being saved:"
-          ul
-            - @goal.errors.full_messages.each do |message|
-              li = message
+.card-content
+  span.card-title
+    = @question.name
+  p
+    = @question.description
+.card-action
+  = form_for(@answer, local: true, url: @url) do |f|
+    - if @answer.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@answer.errors.count, "error")} prohibited this answer from being saved:"
+        ul
+          - @answer.errors.full_messages.each do |message|
+            li = message
 
-      - @question.found_acceptance_criterias do |ac|
-        .input-field
-          = f.label :acceptance_criteria_id
-            input type='radio' name='acceptance_criteria_id' value="#{ac.id}"
-            span
-              = ac.criteria_value
+    .row
+      - @question.found_acceptance_criterias.each do |ac|
+        label.left.mr-20
+          = "<input type='radio' name='answer[acceptance_criterium_id]' value='#{ac.id}' #{'checked' if @answer.acceptance_criterium_id == ac.id}/>".html_safe
+          span
+            = ac.criteria_value
+      input type='hidden' name='answer[customer_id]' value="#{@satisfaction_questionary.customer.id}"
+      input type='hidden' name='answer[satisfaction_questionary_id]' value="#{@satisfaction_questionary.id}"
+      input type='hidden' name='answer[question_id]' value="#{@answer.question.id}"
+    .row
       .actions
         = f.submit 'Enviar', class: 'btn btn-primary'
         - if @step > 0
