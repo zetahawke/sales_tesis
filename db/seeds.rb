@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create!(email: 'zhawke@admin.cl', password: 'password', password_confirmation: 'password') unless User.find_by(email: 'zhawke@admin.cl')
+User.create!(email: 'admin@evares.com', password: 'password', password_confirmation: 'password') unless User.find_by(email: 'admin@evares.com')
 
 acceptance_criteria = [
   ['numeric field 0', 'integer', '0', 0],
