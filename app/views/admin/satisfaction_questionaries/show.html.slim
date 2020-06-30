@@ -3,9 +3,36 @@ h5
   = @satisfaction_questionary.visit&.customer.name
   |  visita: 
   = @satisfaction_questionary.visit.id
+
+p Respuestas
+
+table.table
+  thead
+    tr
+      th
+        | Pregunta
+      th
+        | Respuesta
+      th
+        | Puntos
+  tbody
+    - @satisfaction_questionary.answers.each do |ans|
+      tr
+        td = ans.question.name
+        td = ans.acceptance_criterium.criteria_value
+        td = ans.acceptance_criterium.hit_value
+
 p
-  strong Questions: 
-  = @satisfaction_questionary.questions
+  | Total
+  = @satisfaction_questionary.accomplishment_points
+  |  de 
+  = @satisfaction_questionary.max_accomplishment_points
+  |  (
+  = @satisfaction_questionary.accomplishment_percent
+  | %
+  = @satisfaction_questionary.accomplished ? ', cumple' : ', no cumple'
+  | )
+
 
 => link_to 'Edit', edit_admin_satisfaction_questionary_path(@satisfaction_questionary), class: 'btn btn-primary'
 '|

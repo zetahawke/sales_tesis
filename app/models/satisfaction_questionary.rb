@@ -2,20 +2,13 @@ class SatisfactionQuestionary < ApplicationRecord
   belongs_to :visit
   has_one :customer, through: :visit
   has_many :answers
+  has_many :acceptance_criteria, through: :answers
 
   after_create :generate_public_token
   after_create :send_notification
 
   def found_questions
     Question.where(id: questions || [])
-  end
-
-  def answers
-    Answer.where(question_id: found_questions.pluck(:id))
-  end
-
-  def acceptance_criteria
-    AcceptanceCriterium.where(id: answers.pluck(:acceptance_criteria_id))
   end
 
   def accomplishment_percent

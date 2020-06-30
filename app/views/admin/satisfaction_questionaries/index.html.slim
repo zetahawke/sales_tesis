@@ -12,7 +12,10 @@ table
   tbody
     - @satisfaction_questionaries.each do |satisfaction_questionary|
       tr
-        td = satisfaction_questionary.visit
+        td 
+          = satisfaction_questionary.visit.salesman.name
+          |  visita a 
+          = satisfaction_questionary.visit.customer.name
         td = satisfaction_questionary.questions
         td = link_to 'Show', admin_satisfaction_questionary_path(satisfaction_questionary)
         td = link_to 'Edit', edit_admin_satisfaction_questionary_path(satisfaction_questionary)
