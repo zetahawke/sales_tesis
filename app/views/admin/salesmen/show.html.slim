@@ -1,7 +1,11 @@
-h5
-  strong Name: 
-  = @salesman.name
-
-=> link_to 'Edit', edit_admin_salesman_path(@salesman), class: 'btn btn-primary'
-'|
-=< link_to 'Back', admin_salesmen_path, class: 'btn btn-default'
+span.card-title
+  h5
+    strong Name: 
+    = @salesman.name
+.card-content
+  br/
+  = render 'graphic'
+.card-action
+  => link_to 'Edit', edit_admin_salesman_path(@salesman), class: 'btn btn-primary'
+  '|
+  =< link_to 'Back', admin_salesmen_path, class: 'btn btn-default'

@@ -8,10 +8,17 @@ class Salesman < ApplicationRecord
       obj = {}
       date = date.try(:to_date)
       where('').map do |salesman|
-        obj.merge!({ salesman.name => salesman.current_media_percent(type, date) })
+        obj.merge!(salesman.current_metrics(type, date))
       end
       obj
     end
+  end
+
+  def current_metrics(type, date)
+    date = date.try(:to_date)
+    {
+      name => current_media_percent(type, date)
+    }
   end
 
   def current_media_percent(type, date)

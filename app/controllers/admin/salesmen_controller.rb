@@ -1,9 +1,10 @@
 module Admin
   class SalesmenController < AdminController
     before_action :set_salesman, only: [:show, :edit, :update, :destroy]
+    before_action :set_salesmen, only: [:index]
     before_action :set_form_url, only: [:edit, :new]
-    before_action :set_filter_params, only: [:index]
-    before_action :set_graphic_data, only: [:index]
+    before_action :set_filter_params, only: [:index, :show]
+    before_action :set_graphic_data, only: [:index, :show]
   
     # GET /salesmen
     # GET /salesmen.json
@@ -69,6 +70,10 @@ module Admin
       @salesman = Salesman.find(params[:id])
     end
 
+    def set_salesmen
+      @salesmen = Salesman.all
+    end
+
     def set_form_url
       @url = params[:action] == 'edit' ? admin_salesman_path(@salesman) : admin_salesmen_path
     end
@@ -84,8 +89,7 @@ module Admin
     end
 
     def set_graphic_data
-      @salesmen = Salesman.all
-      @graphic_data = @salesmen.all_media_percent(params[:type], params[:date])
+      @graphic_data = params[:action] == 'index' ? @salesmen.all_media_percent(params[:type], params[:date]) : @salesman.current_metrics(params[:type], params[:date])
     end
   end
 end

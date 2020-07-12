@@ -1,0 +1,17 @@
+form action="#{params[:action] == 'index' ? admin_salesmen_path : admin_salesman_path(@salesman)}" method="get"
+  .row
+    .col.s12.m3
+      .row
+        label for='type' Tipo
+      .row
+        - %w(daily monthly yearly).each do |type|
+          label.left.mr-10
+            = "<input name='type' type='radio' value='#{type}' #{'checked' if params[:type] == type} />".html_safe
+            span = I18n.t("salesman.filters.type.#{type}")
+    .col.s12.m2
+      label for='date' Fecha
+      input type="text" class="datepicker" name='date' value="#{params[:date]}"
+    .col.s12.m2
+      button.btn.btn-default.mt-30 type='submit' Buscar
+
+= bar_chart @graphic_data
