@@ -5,6 +5,12 @@ span.card-title
 .card-content
   br/
   = render 'graphic'
+  br/
+  .row
+    div style="background-color: black; height: 30px; width: 5px; margin-left: #{((92.0 / 100.0) * @graphic_data.values.first)}%; position: absolute; z-index: 3;"
+  .row
+    .progress style='margin-top: -8px; z-index: 2;'
+      .determinate.trafic-light-gradient style=("width: 100%")
 .card-action
   => link_to 'Edit', edit_admin_salesman_path(@salesman), class: 'btn btn-primary'
   '|
