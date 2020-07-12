@@ -2,6 +2,7 @@ module Admin
   class SalesmenController < AdminController
     before_action :set_salesman, only: [:show, :edit, :update, :destroy]
     before_action :set_form_url, only: [:edit, :new]
+    before_action :set_filter_params, only: [:index]
   
     # GET /salesmen
     # GET /salesmen.json
@@ -64,18 +65,23 @@ module Admin
     end
   
     private
-      # Use callbacks to share common setup or constraints between actions.
-      def set_salesman
-        @salesman = Salesman.find(params[:id])
-      end
-  
-      def set_form_url
-        @url = params[:action] == 'edit' ? admin_salesman_path(@salesman) : admin_salesmen_path
-      end
-  
-      # Only allow a list of trusted parameters through.
-      def salesman_params
-        params.require(:salesman).permit(:name)
-      end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_salesman
+      @salesman = Salesman.find(params[:id])
+    end
+
+    def set_form_url
+      @url = params[:action] == 'edit' ? admin_salesman_path(@salesman) : admin_salesmen_path
+    end
+
+    # Only allow a list of trusted parameters through.
+    def salesman_params
+      params.require(:salesman).permit(:name)
+    end
+
+    def set_filter_params
+      params[:type] ||= 'monthly'
+      params[:date] ||= Date.current
+    end
   end
 end

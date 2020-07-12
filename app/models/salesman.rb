@@ -6,7 +6,7 @@ class Salesman < ApplicationRecord
   class << self
     def all_media_percent
       obj = {}
-      all.map do |salesman|
+      where('').map do |salesman|
         obj.merge!({ salesman.name => salesman.current_media_percent })
       end
       obj

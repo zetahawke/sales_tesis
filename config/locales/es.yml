@@ -1,0 +1,7 @@
+es:
+  salesman:
+    filters:
+      type:
+        daily: Diario
+        monthly: Mensual
+        yearly: Anual

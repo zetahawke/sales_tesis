@@ -2,9 +2,29 @@ span.card-title
   h5 Listing salesmen
 .card-content
   br/
-  span.fs-18 Gráficos de ventas
+  .row
+    span.fs-18 Gráficos de ventas
+    p
+      | Gráfico de cumplimiento de espectativas del comprador.
+  
 
-  = bar_chart Salesman.all_media_percent
+  form action="#{admin_salesmen_path}" method="get"
+    .row
+      .col.s12.m3
+        .row
+          label for='type' Tipo
+        .row
+          - %w(daily monthly yearly).each do |type|
+            label.left
+              = "<input name='type' type='radio' value='#{type}' #{'checked' if params[:type] == type} />".html_safe
+              span = I18n.t("salesman.filters.type.#{type}")
+      .col.s12.m2
+        label for='date' Fecha
+        input type="text" class="datepicker" name='date' value="#{params[:date]}"
+      .col.s12.m2
+        button.btn.btn-default type='submit' Buscar
+
+  = bar_chart @salesmen.all_media_percent
 
   br/
 

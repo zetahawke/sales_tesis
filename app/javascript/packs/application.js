@@ -39,5 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.Materialbox.init(elems, options);
     var elems = document.querySelectorAll('.collapsible');
     var instances = M.Collapsible.init(elems, options);
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, {
+      format: 'dd-mm-yyyy'
+    });
   });
 });
