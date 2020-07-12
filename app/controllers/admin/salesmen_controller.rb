@@ -3,12 +3,11 @@ module Admin
     before_action :set_salesman, only: [:show, :edit, :update, :destroy]
     before_action :set_form_url, only: [:edit, :new]
     before_action :set_filter_params, only: [:index]
+    before_action :set_graphic_data, only: [:index]
   
     # GET /salesmen
     # GET /salesmen.json
-    def index
-      @salesmen = Salesman.all
-    end
+    def index; end
   
     # GET /salesmen/1
     # GET /salesmen/1.json
@@ -82,6 +81,11 @@ module Admin
     def set_filter_params
       params[:type] ||= 'monthly'
       params[:date] ||= Date.current
+    end
+
+    def set_graphic_data
+      @salesmen = Salesman.all
+      @graphic_data = @salesmen.all_media_percent(params[:type], params[:date])
     end
   end
 end
