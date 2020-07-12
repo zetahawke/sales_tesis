@@ -1,21 +1,30 @@
-h5 Listing salesmen
+span.card-title
+  h5 Listing salesmen
+.card-content
+  br/
+  span.fs-18 Gráficos de ventas
 
-table
-  thead
-    tr
-      th Name
-      th
-      th
-      th
+  = bar_chart Salesman.all_media_percent
 
-  tbody
-    - @salesmen.each do |salesman|
+  br/
+
+  table
+    thead
       tr
-        td = salesman.name
-        td = link_to 'Show', admin_salesman_path(salesman)
-        td = link_to 'Edit', edit_admin_salesman_path(salesman)
-        td = link_to 'Destroy', admin_salesman_path(salesman), data: { confirm: 'Are you sure?' }, method: :delete
+        th Name
+        th
+        th
+        th
 
-br
+    tbody
+      - @salesmen.each do |salesman|
+        tr
+          td = salesman.name
+          td = link_to 'Show', admin_salesman_path(salesman)
+          td = link_to 'Edit', edit_admin_salesman_path(salesman)
+          td = link_to 'Destroy', admin_salesman_path(salesman), data: { confirm: 'Are you sure?' }, method: :delete
 
-= link_to 'New Salesman', new_admin_salesman_path, class: 'btn btn-primary'
+  br
+
+.card-actions
+  = link_to 'New Salesman', new_admin_salesman_path, class: 'btn btn-primary'
