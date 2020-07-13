@@ -23,7 +23,8 @@ table.table
         td = ans.acceptance_criterium.hit_value
 
 p
-  | Total
+  strong
+    | Total 
   = @satisfaction_questionary.accomplishment_points
   |  de 
   = @satisfaction_questionary.max_accomplishment_points
@@ -34,12 +35,13 @@ p
   | )
 
 p
-  strong Token
+  strong Token 
   = @satisfaction_questionary.public_token
 
 p
-  | Link a encuesta: 
-  = link_to 'Link', satisfaction_questionary.public_url
+  strong
+    | Link a encuesta: 
+  = link_to 'Link', @satisfaction_questionary.public_url
 
 
 => link_to 'Edit', edit_admin_satisfaction_questionary_path(@satisfaction_questionary), class: 'btn btn-primary'
