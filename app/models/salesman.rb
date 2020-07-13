@@ -23,10 +23,13 @@ class Salesman < ApplicationRecord
   end
 
   def current_media_percent(type, date)
-    data = send("data_#{type}", date, 'visits')
+    data = send("data_#{type}", date, 'visits') # remove visits that hasn't satisfaction_questionary
     all_percents = data.map do |visit|
-      visit.satisfaction_questionary.accomplishment_percent
-    end
+      sq = visit.satisfaction_questionary
+      return unless sq
+
+      sq.accomplishment_percent
+    end.compact
     return 0 if all_percents.size.zero?
 
     all_percents.sum / all_percents.size
