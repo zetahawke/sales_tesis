@@ -12,6 +12,9 @@
   .input-field
     = f.label :dni
     = f.text_field :dni
+  .input-field
+    = f.label :email
+    = f.text_field :email
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary'
     = link_to 'Back', admin_customers_path, class: 'btn btn-default'

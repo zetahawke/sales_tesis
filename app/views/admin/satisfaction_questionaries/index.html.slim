@@ -5,6 +5,8 @@ table
     tr
       th Visit
       th Questions
+      th Token
+      th Encuesta
       th
       th
       th
@@ -17,6 +19,9 @@ table
           |  visita a 
           = satisfaction_questionary.visit.customer.name
         td = satisfaction_questionary.questions
+        td = satisfaction_questionary.public_token
+        td
+          = link_to 'Link', satisfaction_questionary.public_url
         td = link_to 'Show', admin_satisfaction_questionary_path(satisfaction_questionary)
         td = link_to 'Edit', edit_admin_satisfaction_questionary_path(satisfaction_questionary)
         td = link_to 'Destroy', admin_satisfaction_questionary_path(satisfaction_questionary), data: { confirm: 'Are you sure?' }, method: :delete

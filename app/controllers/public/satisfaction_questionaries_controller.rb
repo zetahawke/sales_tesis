@@ -14,7 +14,7 @@ module Public
     def set_satisfaction_questionary
       @satisfaction_questionary = SatisfactionQuestionary.find_by(public_token: params[:public_token])
       redirect_to root_path, alert: 'No existe el cuestionario.' unless @satisfaction_questionary
-      redirect_to root_path, notice: 'Gracias por tus respuestas!' if @satisfaction_questionary.answers.size >= @satisfaction_questionary.questions.size
+      redirect_to root_path, notice: 'La encuesta ya fué finalizada. Gracias por tus respuestas!' if @satisfaction_questionary.answers.size >= @satisfaction_questionary.questions.size
     rescue StandardError => _e
       redirect_to root_path, alert: 'No existe el cuestionario.'
     end

@@ -33,6 +33,14 @@ p
   = @satisfaction_questionary.accomplished ? ', cumple' : ', no cumple'
   | )
 
+p
+  strong Token
+  = @satisfaction_questionary.public_token
+
+p
+  | Link a encuesta: 
+  = link_to 'Link', satisfaction_questionary.public_url
+
 
 => link_to 'Edit', edit_admin_satisfaction_questionary_path(@satisfaction_questionary), class: 'btn btn-primary'
 '|

@@ -39,6 +39,8 @@ class SatisfactionQuestionary < ApplicationRecord
   end
 
   def send_notification
+    return unless customer.email
+
     NotificationMailer.customer_questionary(customer, visit, self).deliver_now
   end
 

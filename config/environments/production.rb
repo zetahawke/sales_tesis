@@ -109,5 +109,5 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  config.public_url = 'http://evares.herokuapp.com'
+  config.public_url = 'https://immense-dusk-68436.herokuapp.com'
 end
