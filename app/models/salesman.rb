@@ -36,7 +36,7 @@ class Salesman < ApplicationRecord
   end
 
   def traffic_light_for(type, date, percent)
-    goal = send("data_#{type}", date.try(:to_date), 'goals').last
+    goal = send("data_#{type}", date.try(:to_date), 'goals').where(type_of_criteria: type).last
     return 'red' unless goal
 
     goal.traffic_light_color(percent)
