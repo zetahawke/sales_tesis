@@ -15,9 +15,7 @@ table
     - @satisfaction_questionaries.each do |satisfaction_questionary|
       tr
         td 
-          = satisfaction_questionary.visit.salesman.name
-          |  visita a 
-          = satisfaction_questionary.visit.customer.name
+          = satisfaction_questionary.visit_match_name
         td = satisfaction_questionary.questions
         td = satisfaction_questionary.public_token
         td

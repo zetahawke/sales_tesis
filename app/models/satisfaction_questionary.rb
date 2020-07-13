@@ -7,6 +7,8 @@ class SatisfactionQuestionary < ApplicationRecord
   after_create :generate_public_token
   after_create :send_notification
 
+  delegate :match_name, to: :visit, prefix: true
+
   def found_questions
     Question.where(id: questions || [])
   end

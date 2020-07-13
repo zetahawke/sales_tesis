@@ -17,4 +17,8 @@ class Visit < ApplicationRecord
       where('EXTRACT(YEAR FROM visits.created_at) = ?', year)
     end
   end
+
+  def match_name
+    "#{salesman.name} visita a #{customer.name}"
+  end
 end
