@@ -7,8 +7,8 @@
           li = message
 
   .input-field
-    = f.label :visit
     = f.select :visit_id, options_for_select(Visit.joins(:customer).select('customer.name, visit.id').pluck(:name, :id), @satisfaction_questionary.visit_id)
+    = f.label :visit
   .input-field
     select multiple='' name='satisfaction_questionary[questions][]' id='satisfaction_questionary_questions'
       option value="" disabled='disabled' Elija criterios

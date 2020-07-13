@@ -65,6 +65,10 @@ body, html {
   }
 }
 
+.sidenav li > a {
+  padding: 0 0.2rem !important;
+}
+
 @media (max-width: 600px) {
 
 }

@@ -7,8 +7,8 @@
           li = message
 
   .input-field
-    = f.label :salesman
     = f.select :salesman_id, options_for_select(Salesman.all.pluck(:name, :id), @route.salesman_id)
+    = f.label :salesman
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary'
     = link_to 'Back', admin_routes_path, class: 'btn btn-default'
