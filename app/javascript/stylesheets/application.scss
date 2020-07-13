@@ -42,9 +42,27 @@ body, html {
   bottom: 60px;
 }
 
-.trafic-light-gradient {
+.traffic-light-gradient {
   background: rgb(255,0,0);
   background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(245,255,0,1) 53%, rgba(0,255,132,1) 93%);
+}
+
+.traffic-light {
+  .small-light {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+  }
+  .medium-light {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+  .large-light {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+  }
 }
 
 @media (max-width: 600px) {

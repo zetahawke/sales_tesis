@@ -1,15 +1,26 @@
 h5
-  strong Salesman: 
-  = @goal.salesman
+  | Meta 
+  = I18n.t("salesman.filters.type.#{@goal.type_of_criteria}")
+  |  para 
+  = @goal.period
 p
-  strong Type: 
-  = @goal.type
+  strong Salesman: 
+  = @goal.salesman.name
+p
+  strong Tipo de Criterio: 
+  = @goal.type_of_criteria
 p
   strong Criteria: 
   = @goal.criteria
 p
   strong Criteria value: 
   = @goal.criteria_value
+p
+  strong Creado el: 
+  = @goal.created_at.strftime('%d-%m-%Y')
+p
+  strong Periodo: 
+  = @goal.period
 
 => link_to 'Edit', edit_admin_goal_path(@goal), class: 'btn btn-primary'
 '|

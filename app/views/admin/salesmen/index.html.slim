@@ -14,7 +14,8 @@ span.card-title
   table
     thead
       tr
-        th Name
+        th Nombre
+        th Indicador
         th
         th
         th
@@ -23,6 +24,9 @@ span.card-title
       - @salesmen.each do |salesman|
         tr
           td = salesman.name
+          td
+            .traffic-light
+              .small-light style="background-color: #{salesman.traffic_light_for(params[:type], params[:date], @graphic_data.find { |s,v| s == salesman.name }.last)}"
           td = link_to 'Show', admin_salesman_path(salesman)
           td = link_to 'Edit', edit_admin_salesman_path(salesman)
           td = link_to 'Destroy', admin_salesman_path(salesman), data: { confirm: 'Are you sure?' }, method: :delete

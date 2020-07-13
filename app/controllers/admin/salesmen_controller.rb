@@ -5,6 +5,7 @@ module Admin
     before_action :set_form_url, only: [:edit, :new]
     before_action :set_filter_params, only: [:index, :show]
     before_action :set_graphic_data, only: [:index, :show]
+    before_action :set_traffic_light_color, only: [:show]
   
     # GET /salesmen
     # GET /salesmen.json
@@ -90,6 +91,10 @@ module Admin
 
     def set_graphic_data
       @graphic_data = params[:action] == 'index' ? @salesmen.all_media_percent(params[:type], params[:date]) : @salesman.current_metrics(params[:type], params[:date])
+    end
+
+    def set_traffic_light_color
+      @traffic_light_color = @salesman.traffic_light_for(params[:type], params[:date], @graphic_data.values.first || 0)
     end
   end
 end

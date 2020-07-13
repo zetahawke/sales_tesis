@@ -7,11 +7,11 @@
           li = message
 
   .input-field
-    = f.label :salesman
-    = f.text_field :salesman
+    = f.select :salesman_id, options_for_select(Salesman.all.pluck(:name, :id), @goal.salesman_id)
+    = f.label :salesman_id
   .input-field
-    = f.label :type
-    = f.text_field :type
+    = f.select :type_of_criteria, options_for_select(%w(daily monthly yearly), @goal.type_of_criteria)
+    = f.label :type_of_criteria
   .input-field
     = f.label :criteria
     = f.text_field :criteria

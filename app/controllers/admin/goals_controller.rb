@@ -75,7 +75,7 @@ module Admin
   
       # Only allow a list of trusted parameters through.
       def goal_params
-        params.require(:goal).permit(:salesman_id, :type, :criteria, :criteria_value)
+        params.require(:goal).permit(:salesman_id, :type_of_criteria, :criteria, :criteria_value)
       end
   end
 end
