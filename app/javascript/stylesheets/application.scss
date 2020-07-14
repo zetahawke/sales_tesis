@@ -69,6 +69,17 @@ body, html {
   padding: 0 0.2rem !important;
 }
 
+.triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 10px 17.3px 10px;
+  border-color: transparent transparent black transparent;
+  line-height: 0px;
+  _border-color: #000000 #000000 black #000000;
+  _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+}
+
 @media (max-width: 600px) {
 
 }
