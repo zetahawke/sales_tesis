@@ -4,16 +4,16 @@ h5
   |  para 
   = @goal.period
 p
-  strong Salesman: 
+  strong Vendedor: 
   = @goal.salesman.name
 p
   strong Tipo de Criterio: 
   = @goal.type_of_criteria
 p
-  strong Criteria: 
+  strong Criterio: 
   = @goal.criteria
 p
-  strong Criteria value: 
+  strong Criterio value: 
   = @goal.criteria_value
 p
   strong Creado el: 
@@ -22,6 +22,6 @@ p
   strong Periodo: 
   = @goal.period
 
-=> link_to 'Edit', edit_admin_goal_path(@goal), class: 'btn btn-primary'
+=> link_to 'Editar', edit_admin_goal_path(@goal), class: 'btn btn-primary'
 '|
 =< link_to 'Back', admin_goals_path, class: 'btn btn-default'

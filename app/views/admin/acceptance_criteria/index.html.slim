@@ -1,11 +1,11 @@
-h5 Listing acceptance_criteria
+h5 Listando criterios de aceptación
 
 table
   thead
     tr
       th Name
-      th Criteria
-      th Criteria value
+      th Criterio
+      th Criterio value
       th
       th
       th
@@ -16,10 +16,10 @@ table
         td = acceptance_criterium.name
         td = acceptance_criterium.criteria
         td = acceptance_criterium.criteria_value
-        td = link_to 'Show', admin_acceptance_criterium_path(acceptance_criterium)
-        td = link_to 'Edit', edit_admin_acceptance_criterium_path(acceptance_criterium)
-        td = link_to 'Destroy', admin_acceptance_criterium_path(acceptance_criterium), data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Mostrar', admin_acceptance_criterium_path(acceptance_criterium)
+        td = link_to 'Editar', edit_admin_acceptance_criterium_path(acceptance_criterium)
+        td = link_to 'Eliminar', admin_acceptance_criterium_path(acceptance_criterium), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Acceptance criterium', new_admin_acceptance_criterium_path, class: 'btn btn-primary'
+= link_to 'Nuevo Criterio de Aceptación', new_admin_acceptance_criterium_path, class: 'btn btn-primary'

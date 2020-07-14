@@ -1,5 +1,5 @@
 span.card-title
-  h5 Listing salesmen
+  h5 Listando Vendedores
 .card-content
   br/
   .row
@@ -27,11 +27,11 @@ span.card-title
           td
             .traffic-light
               .small-light style="background-color: #{salesman.traffic_light_for(params[:type], params[:date], @graphic_data.find { |s,v| s == salesman.name }.last)}"
-          td = link_to 'Show', admin_salesman_path(salesman)
-          td = link_to 'Edit', edit_admin_salesman_path(salesman)
-          td = link_to 'Destroy', admin_salesman_path(salesman), data: { confirm: 'Are you sure?' }, method: :delete
+          td = link_to 'Mostrar', admin_salesman_path(salesman)
+          td = link_to 'Editar', edit_admin_salesman_path(salesman)
+          td = link_to 'Eliminar', admin_salesman_path(salesman), data: { confirm: 'Are you sure?' }, method: :delete
 
   br
 
 .card-action
-  = link_to 'New Salesman', new_admin_salesman_path, class: 'btn btn-primary'
+  = link_to 'Nuevo Vendedor', new_admin_salesman_path, class: 'btn btn-primary'

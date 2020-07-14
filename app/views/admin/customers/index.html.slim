@@ -1,4 +1,4 @@
-h5 Listing customers
+h5 Listando clientes
 
 table
   thead
@@ -16,10 +16,10 @@ table
         td = customer.name
         td = customer.dni
         td = customer.email
-        td = link_to 'Show', admin_customer_path(customer)
-        td = link_to 'Edit', edit_admin_customer_path(customer)
-        td = link_to 'Destroy', admin_customer_path(customer), data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Mostrar', admin_customer_path(customer)
+        td = link_to 'Editar', edit_admin_customer_path(customer)
+        td = link_to 'Eliminar', admin_customer_path(customer), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Customer', new_admin_customer_path, class: 'btn btn-primary'
+= link_to 'Nuevo Cliente', new_admin_customer_path, class: 'btn btn-primary'

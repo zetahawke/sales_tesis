@@ -1,9 +1,9 @@
-h5 Listing routes
+h5 Listando rutas
 
 table
   thead
     tr
-      th Salesman
+      th Vendedor
       th
       th
       th
@@ -12,10 +12,10 @@ table
     - @routes.each do |route|
       tr
         td = route.salesman&.name
-        td = link_to 'Show', admin_route_path(route)
-        td = link_to 'Edit', edit_admin_route_path(route)
-        td = link_to 'Destroy', admin_route_path(route), data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Mostrar', admin_route_path(route)
+        td = link_to 'Editar', edit_admin_route_path(route)
+        td = link_to 'Eliminar', admin_route_path(route), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Route', new_admin_route_path, class: 'btn btn-primary'
+= link_to 'Nuevo Route', new_admin_route_path, class: 'btn btn-primary'

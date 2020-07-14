@@ -11,7 +11,7 @@
     = f.label :customer
   .input-field
     = f.select :route_id, options_for_select(Route.joins(:salesman).select('salesmen.name, routes.id').pluck(:name, :id), @visit.route_id)
-    = f.label "Salesman's route"
+    = f.label "Vendedor's route"
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary'
     = link_to 'Back', admin_visits_path, class: 'btn btn-default'

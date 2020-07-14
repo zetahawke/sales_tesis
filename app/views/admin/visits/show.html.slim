@@ -1,11 +1,11 @@
 h5
-  strong Customer: 
+  strong Cliente: 
   = @visit.customer&.name
 p
   strong Route: 
   = @visit.route&.salesman&.name
   |  Route
 
-=> link_to 'Edit', edit_admin_visit_path(@visit), class: 'btn btn-primary'
+=> link_to 'Editar', edit_admin_visit_path(@visit), class: 'btn btn-primary'
 '|
 =< link_to 'Back', admin_visits_path, class: 'btn btn-default'

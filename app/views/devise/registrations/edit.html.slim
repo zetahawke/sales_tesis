@@ -1,5 +1,5 @@
 h2
-  | Edit 
+  | Editar 
   = resource_name.to_s.humanize
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = render "devise/shared/error_messages", resource: resource
@@ -16,7 +16,7 @@ h2
     i
       | (leave blank if you don't want to change it)
     br
-    = f.password_field :password, autocomplete: "new-password"
+    = f.password_field :password, autocomplete: "Nuevo-password"
     - if @minimum_password_length
       br
       em
@@ -25,7 +25,7 @@ h2
   .input-field
     = f.label :password_confirmation
     br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
+    = f.password_field :password_confirmation, autocomplete: "Nuevo-password"
   .input-field
     = f.label :current_password
     i

@@ -14,11 +14,11 @@ h2
         = @minimum_password_length
         |  characters minimum)
     br
-    = f.password_field :password, autocomplete: "new-password"
+    = f.password_field :password, autocomplete: "Nuevo-password"
   .input-field
     = f.label :password_confirmation
     br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
+    = f.password_field :password_confirmation, autocomplete: "Nuevo-password"
   .actions
     = f.submit "Sign up"
 = render "devise/shared/links"
