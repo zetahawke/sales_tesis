@@ -75,7 +75,7 @@ module Admin
   
       # Only allow a list of trusted parameters through.
       def customer_params
-        params.require(:customer).permit(:name, :dni)
+        params.require(:customer).permit(:name, :dni, :email)
       end
   end
 end
