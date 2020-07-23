@@ -28,7 +28,7 @@ class Salesman < ApplicationRecord
     data = send("data_#{type}", date, 'visits')
     all_percents = data.map do |visit|
       sq = visit.satisfaction_questionary
-      return unless sq
+      next unless sq
 
       sq.accomplishment_percent
     end.compact
