@@ -44,6 +44,8 @@ class SatisfactionQuestionary < ApplicationRecord
     return unless customer.email
 
     NotificationMailer.customer_questionary(customer, visit, self).deliver_now
+  rescue StandardError => e
+    puts e.message
   end
 
   def public_url
