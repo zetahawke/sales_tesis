@@ -1,5 +1,6 @@
 module Public
   class VisitsController < ApplicationController
+    before_action :set_private_token
     before_action :verify_user
     before_action :set_visit, only: [:show, :edit, :update, :destroy]
     before_action :set_form_url, only: [:edit, :new]
@@ -43,9 +44,13 @@ module Public
       params.require(:visit).permit(:customer_id, :route_id)
     end
 
+    def set_private_token
+      @private_token ||= params[:private_token]
+    end
+
     def verify_user
-      @current_user ||= Customer.find_by(private_token: params[:private_token]) || Salesman.find_by(private_token: params[:private_token])
-      redirect_to root_path, notice: 'No tienes acceso a este módulo' if params[:private_token].blank? || @current_user.blank?
+      @current_user ||= Customer.find_by(private_token: @private_token) || Salesman.find_by(private_token: @private_token)
+      redirect_to root_path, notice: 'No tienes acceso a este módulo' if @private_token.blank? || @current_user.blank?
     end
   end
 end
