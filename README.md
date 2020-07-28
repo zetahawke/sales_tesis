@@ -11,7 +11,7 @@ EVARES360 are here with her own project made with RoR latest version's framework
 Make sure to have all the necessary stuff to start building this up.
 
 ### Pre Requisites
-- Ruby 2.6.1
+- Ruby 2.7.1
 - Rails 6.0.3.1
 - Bundler >= 2.14
 - Postgresql >= 9.2 (pg_cli and pg gem >= 0.18)
@@ -37,4 +37,4 @@ All Pull Request must be made against 'stable' branch
 
 ## License
 Owned by
-[Importadora Ali](https://www.github.com/zetahawke/)
+[EVARES360](https://www.github.com/zetahawke/)

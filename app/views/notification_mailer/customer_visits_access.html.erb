@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<style type="text/css">
+  body, table {
+    font-family: Ubuntu, Helvetica, Arial, sans-serif;
+  }
+  th, td {
+    border: 1px solid black;
+  }
+</style>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <h1>
+    Hola <%=  @customer.name&.capitalize %>
+  </h1>
+  <br />
+  <p>  
+    Te dejamos un link de acceso a nuestro sistema de administración de atención al cliente en el siguiente link:
+    <%= link_to 'Link', @public_url %>. Con el, podrás administrar las visitas que se te han agendado mediante nuestro sistema con el fin de 
+    que nos notifiques cuando un vendedor completó o no su visita.
+  </p>
+</body>
+</html>
