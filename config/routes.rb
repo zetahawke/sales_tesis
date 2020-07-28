@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   namespace :public do
     get '/sq', to: 'satisfaction_questionaries#by_token'
 
-    resources :answers, only: [:create, :update] 
+    resources :answers, only: [:create, :update]
+    resources :visits, only: [:index, :update]
   end
 end

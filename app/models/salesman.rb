@@ -62,7 +62,7 @@ class Salesman < ApplicationRecord
 
   def generate_private_token
     token = Devise.friendly_token
-    update_columns(public_token: token)
+    update_columns(private_token: token)
   end
 
   def send_notification
@@ -74,6 +74,6 @@ class Salesman < ApplicationRecord
   end
 
   def public_visits_url
-    "#{Rails.configuration.public_url}/public/visits?public_token=#{public_token}"
+    "#{Rails.configuration.public_url}/public/visits?private_token=#{private_token}"
   end
 end

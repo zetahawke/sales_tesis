@@ -1,0 +1,26 @@
+h5 Listando visitas
+
+table
+  thead
+    tr
+      th Cliente
+      th Route
+      th
+      th
+      th
+
+  tbody
+    - @visits.each do |visit|
+      tr
+        td = visit.customer&.name
+        td 
+          = visit.route&.salesman.name
+          |  ruta: 
+          = visit.route.id
+        td = link_to 'Mostrar', admin_visit_path(visit)
+        td = link_to 'Editar', edit_admin_visit_path(visit)
+        td = link_to 'Eliminar', admin_visit_path(visit), data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'Nuevo Visita', new_admin_visit_path, class: 'btn btn-primary'
