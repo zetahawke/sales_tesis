@@ -13,4 +13,4 @@
     = excuse_f.hidden_field :visit_id, value: @visit.id
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary'
-    = link_to 'Back', public_salesmen_visits_path, class: 'btn btn-default'
+    = link_to 'Back', public_salesmen_visits_path(token: params[:token]), class: 'btn btn-default'

@@ -12,6 +12,18 @@
   .input-field
     = f.select :route_id, options_for_select(Route.joins(:salesman).select('salesmen.name, routes.id').pluck(:name, :id), @visit.route_id)
     = f.label "Vendedor's route"
+  
+  = f.fields_for :excuse do |excuse_f|
+    .input-field
+      = excuse_f.label :valid_argument
+        = excuse_f.check_box :valid_argument
+        span Excusa válida?
+
+  br/
+  br/
+  br/
+  br/
+
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary'
     = link_to 'Back', admin_visits_path, class: 'btn btn-default'

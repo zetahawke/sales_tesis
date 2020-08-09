@@ -12,8 +12,8 @@ module Public
     
       # GET /visits/1/edit
       def edit
-        if @visit.excuse
-          redirect_to public_salesmen_visits_path(token: params[:token]), alert: 'Ya has excusado dicha visita'
+        if @visit.excuse || @visit.status != 'created'
+          redirect_to public_salesmen_visits_path(token: params[:token]), alert: 'Ya has excusado dicha visita o ya no se puede modificar.'
         else
           @visit.build_excuse
         end

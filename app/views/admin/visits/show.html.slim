@@ -5,6 +5,12 @@ p
   strong Route: 
   = @visit.route&.salesman&.name
   |  Route
+p
+  strong Excusa: 
+  = @visit.excuse ? @visit.excuse&.reason[0..50] : 'No aplica'
+p
+  strong Aceptada: 
+  = @visit.excuse ? (@visit.excuse&.valid_argument&.to_s == 'true' ? 'Sí' : 'No') : 'No aplica'
 
 => link_to 'Editar', edit_admin_visit_path(@visit), class: 'btn btn-primary'
 '|

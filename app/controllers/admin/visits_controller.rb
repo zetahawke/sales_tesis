@@ -43,7 +43,7 @@ module Admin
     # PATCH/PUT /visits/1.json
     def update
       respond_to do |format|
-        if @visit.update(visit_params)
+        if @visit.update(visit_params) && @visit.excuse.update(excuse_params)
           format.html { redirect_to admin_visit_path(@visit), notice: 'Visit was successfully updated.' }
           format.json { render :show, status: :ok, location: @visit }
         else
@@ -76,6 +76,10 @@ module Admin
       # Only allow a list of trusted parameters through.
       def visit_params
         params.require(:visit).permit(:customer_id, :route_id)
+      end
+
+      def excuse_params
+        params[:visit].require(:excuse_attributes).permit(:valid_argument)
       end
   end
 end

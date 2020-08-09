@@ -6,6 +6,8 @@ table
       th Cliente
       th Route
       th Estado
+      th Excusa
+      th Aceptada
       th
       th
       th
@@ -19,6 +21,8 @@ table
           |  ruta: 
           = visit.route.id
         td = I18n.t("visit.statuses.#{visit.status}")
+        td = visit.excuse ? visit.excuse&.reason[0..50] : 'No aplica'
+        td = visit.excuse ? (visit.excuse&.valid_argument&.to_s == 'true' ? 'Sí' : 'No') : 'No aplica'
         td = link_to 'Mostrar', admin_visit_path(visit)
         td = link_to 'Editar', edit_admin_visit_path(visit)
         td = link_to 'Eliminar', admin_visit_path(visit), data: { confirm: 'Are you sure?' }, method: :delete
