@@ -11,15 +11,19 @@ class Visit < ApplicationRecord
 
   class << self
     def by_month(month = Date.current.month)
-      where('EXTRACT(MONTH FROM visits.created_at) = ?', month)
+      where('EXTRACT(MONTH FROM visits.created_at) = ?', month).exclude_excused
     end
 
     def by_day(day = Date.current.day)
-      where('EXTRACT(DAY FROM visits.created_at) = ?', day)
+      where('EXTRACT(DAY FROM visits.created_at) = ?', day).exclude_excused
     end
 
     def by_year(year = Date.current.year)
-      where('EXTRACT(YEAR FROM visits.created_at) = ?', year)
+      where('EXTRACT(YEAR FROM visits.created_at) = ?', year).exclude_excused
+    end
+
+    def exclude_excused
+      left_outer_joins(:excuse).group("visits.id, excuses.valid_argument").having("COUNT(excuses) = 0 OR (COUNT(excuses) > 0 AND excuses.valid_argument = ?)", false)     
     end
   end
 
