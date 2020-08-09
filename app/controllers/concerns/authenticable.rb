@@ -7,7 +7,7 @@ module Authenticable
   protected
 
   def current_entity
-    @current_entity ||= (params[:controller] == 'salesmen' ? Salesman : Customer).find_by(private_token: authenticable_params[:token]) unless authenticable_params[:token].blank?
+    @current_entity ||= (params[:controller].include?('salesmen') ? Salesman : Customer).find_by(private_token: authenticable_params[:token]) unless authenticable_params[:token].blank?
   end
 
   def authenticable_params

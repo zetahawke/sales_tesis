@@ -26,11 +26,11 @@ Rails.application.routes.draw do
     resources :answers, only: [:create, :update]
 
     namespace :customers do
-      resources :visits, only: [:index, :update]
+      resources :visits, only: [:index, :update, :edit]
     end
 
     namespace :salesmen do
-      resources :visits, only: [:index, :update]
+      resources :visits, only: [:index, :update, :edit]
     end
 
   end
