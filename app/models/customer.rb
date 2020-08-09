@@ -17,6 +17,6 @@ class Customer < ApplicationRecord
   end
 
   def public_visits_url
-    "#{Rails.configuration.public_url}/public/customers/visits?private_token=#{private_token}"
+    "#{Rails.configuration.public_url}/public/customers/visits?token=#{private_token}"
   end
 end

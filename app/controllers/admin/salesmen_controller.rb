@@ -88,7 +88,7 @@ module Admin
 
     # Only allow a list of trusted parameters through.
     def salesman_params
-      params.require(:salesman).permit(:name)
+      params.require(:salesman).permit(:name, :email)
     end
 
     def set_filter_params
