@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_09_190916) do
+ActiveRecord::Schema.define(version: 2020_08_09_192015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,6 +178,7 @@ ActiveRecord::Schema.define(version: 2020_08_09_190916) do
     t.bigint "route_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status", default: 0
     t.index ["customer_id"], name: "index_visits_on_customer_id"
     t.index ["route_id"], name: "index_visits_on_route_id"
   end
