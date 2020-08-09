@@ -5,13 +5,10 @@
       ul
         - @visit.errors.full_messages.each do |message|
           li = message
-
+  br/
   .input-field
-    = f.select :customer_id, options_for_select(Customer.all.pluck(:name, :id), @visit.customer_id)
-    = f.label :customer
-  .input-field
-    = f.select :route_id, options_for_select(Route.joins(:salesman).select('salesmen.name, routes.id').pluck(:name, :id), @visit.route_id)
-    = f.label "Vendedor's route"
+    = f.select :status, options_for_select([['Completada', 'accomplished']], @visit.status)
+    = f.label :status
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary'
-    = link_to 'Back', admin_visits_path, class: 'btn btn-default'
+    = link_to 'Back', public_customers_visits_path, class: 'btn btn-default'

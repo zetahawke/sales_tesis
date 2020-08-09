@@ -8,5 +8,5 @@ es:
   visit:
     statuses:
       created: Creada
-      accomplished: Finalizada
-      not_accomplished: No finalizada
+      accomplished: Completada
+      not_accomplished: No completada

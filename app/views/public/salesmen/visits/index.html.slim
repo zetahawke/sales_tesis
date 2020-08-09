@@ -14,8 +14,4 @@ table
         td = visit.route.id
         td = visit.customer&.name
         td = I18n.t("visit.statuses.#{visit.status}")
-        td = link_to 'Editar', edit_public_salesmen_visit_path(visit)
-
-br
-
-= link_to 'Nuevo Visita', new_admin_visit_path, class: 'btn btn-primary'
+        td = link_to 'Editar', edit_public_salesmen_visit_path(visit, token: params[:token])

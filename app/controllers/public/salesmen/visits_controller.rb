@@ -19,8 +19,8 @@ module Public
       def update
         respond_to do |format|
           if @visit.update(visit_params)
-            format.html { redirect_to admin_visit_path(@visit), notice: 'Visit was successfully updated.' }
-            format.json { render :show, status: :ok, location: @visit }
+            format.html { redirect_to public_salesmen_visits_path(token: params[:token]), notice: 'Visit was successfully updated.' }
+            format.json { render :index, status: :ok }
           else
             format.html { render :edit }
             format.json { render json: @visit.errors, status: :unprocessable_entity }
@@ -35,7 +35,7 @@ module Public
       end
   
       def set_form_url
-        @url = params[:action] == 'edit' ? public_visit_path(@visit) : public_visits_path
+        @url = params[:action] == 'edit' ? public_visit_path(@visit, token: params[:token]) : public_visits_path(token: params[:token])
       end
   
       # Only allow a list of trusted parameters through.
