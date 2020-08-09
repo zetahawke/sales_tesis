@@ -14,7 +14,12 @@ span.card-title
     .progress style='margin-top: -8px; z-index: 2;'
       .determinate.traffic-light-gradient style=("width: 100%")
     .triangle style="margin-left: #{((98.6 / 100.0) * (@graphic_data.values.first.blank? ? 1 : @graphic_data.values.first))}%; margin-top: -12px;"
+p
+  strong Token: 
+  = @salesman.private_token
 .card-action
-  => link_to 'Editar', edit_admin_salesman_path(@salesman), class: 'btn btn-primary'
+  = link_to 'Editar', edit_admin_salesman_path(@salesman), class: 'btn btn-primary'
   '|
-  =< link_to 'Back', admin_salesmen_path, class: 'btn btn-default'
+  = link_to 'Crear token', admin_salesman_create_token_path(@salesman), class: 'btn btn-primary'
+  '|
+  = link_to 'Back', admin_salesmen_path, class: 'btn btn-default'

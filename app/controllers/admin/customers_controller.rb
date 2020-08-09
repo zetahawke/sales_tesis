@@ -1,6 +1,6 @@
 module Admin
   class CustomersController < AdminController
-    before_action :set_customer, only: [:show, :edit, :update, :destroy]
+    before_action :set_customer, only: [:show, :edit, :update, :destroy, :create_token]
     before_action :set_form_url, only: [:edit, :new]
   
     # GET /customers
@@ -62,11 +62,18 @@ module Admin
         format.json { head :no_content }
       end
     end
+
+    def create_token
+      @customer.generate_private_token
+      redirect_to admin_customer_path(@customer), notice: 'Token de acceso creado satisfactoriamente.'
+    rescue => _e
+      redirect_to admin_customer_path(@customer), alert: 'Error al crear el Token de acceso.'
+    end
   
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_customer
-        @customer = Customer.find(params[:id])
+        @customer = Customer.find(params[:id] || params[:customer_id])
       end
 
       def set_form_url

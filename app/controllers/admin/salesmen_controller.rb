@@ -1,6 +1,6 @@
 module Admin
   class SalesmenController < AdminController
-    before_action :set_salesman, only: [:show, :edit, :update, :destroy]
+    before_action :set_salesman, only: [:show, :edit, :update, :destroy, :create_token]
     before_action :set_salesmen, only: [:index]
     before_action :set_form_url, only: [:edit, :new]
     before_action :set_filter_params, only: [:index, :show]
@@ -64,11 +64,18 @@ module Admin
         format.json { head :no_content }
       end
     end
+
+    def create_token
+      @salesman.generate_private_token
+      redirect_to admin_salesman_path(@salesman), notice: 'Token de acceso creado satisfactoriamente.'
+    rescue => _e
+      redirect_to admin_salesman_path(@salesman), alert: 'Error al crear el Token de acceso.'
+    end
   
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_salesman
-      @salesman = Salesman.find(params[:id])
+      @salesman = Salesman.find(params[:id] || params[:salesman_id])
     end
 
     def set_salesmen

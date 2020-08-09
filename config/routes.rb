@@ -10,10 +10,14 @@ Rails.application.routes.draw do
     resources :acceptance_criteria
     resources :satisfaction_questionaries
     resources :visits
-    resources :customers
+    resources :customers do
+      get 'create_token'
+    end
     resources :routes
     resources :goals
-    resources :salesmen
+    resources :salesmen do
+      get 'create_token'
+    end
   end
 
   namespace :public do
