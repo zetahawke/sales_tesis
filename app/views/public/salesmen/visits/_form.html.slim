@@ -5,13 +5,12 @@
       ul
         - @visit.errors.full_messages.each do |message|
           li = message
+  = f.fields_for :excuse do |excuse_f|
+    .input-field
+      = excuse_f.text_field :reason
+      = excuse_f.label :reason
 
-  .input-field
-    = f.select :customer_id, options_for_select(Customer.all.pluck(:name, :id), @visit.customer_id)
-    = f.label :customer
-  .input-field
-    = f.select :route_id, options_for_select(Route.joins(:salesman).select('salesmen.name, routes.id').pluck(:name, :id), @visit.route_id)
-    = f.label "Vendedor's route"
+    = excuse_f.hidden_field :visit_id, value: @visit.id
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary'
     = link_to 'Back', public_salesmen_visits_path, class: 'btn btn-default'

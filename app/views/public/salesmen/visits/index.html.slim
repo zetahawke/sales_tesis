@@ -6,6 +6,8 @@ table
       th ID
       th Cliente
       th Estado
+      th Excusa
+      th Aceptada
       th
 
   tbody
@@ -14,4 +16,6 @@ table
         td = visit.route.id
         td = visit.customer&.name
         td = I18n.t("visit.statuses.#{visit.status}")
-        td = link_to 'Editar', edit_public_salesmen_visit_path(visit, token: params[:token])
+        td = visit.excuse ? visit.excuse&.reason : 'No aplica'
+        td = visit.excuse ? (visit.excuse&.valid_argument&.to_s == 'true' ? 'Sí' : 'No') : 'No aplica'
+        td = link_to 'Editar', edit_public_salesmen_visits_path(visit, token: params[:token])

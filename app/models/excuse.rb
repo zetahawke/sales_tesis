@@ -1,5 +1,6 @@
 class Excuse < ApplicationRecord
   belongs_to :visit
+  has_one :salesman, through: :visit
 
   after_create :set_visit_status
 

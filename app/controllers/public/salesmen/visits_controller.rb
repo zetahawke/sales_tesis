@@ -12,6 +12,11 @@ module Public
     
       # GET /visits/1/edit
       def edit
+        if @visit.excuse
+          redirect_to public_salesmen_visits_path(token: params[:token]), alert: 'Ya has excusado dicha visita'
+        else
+          @visit.build_excuse
+        end
       end
     
       # PATCH/PUT /visits/1
@@ -35,7 +40,7 @@ module Public
       end
   
       def set_form_url
-        @url = params[:action] == 'edit' ? public_visit_path(@visit, token: params[:token]) : public_visits_path(token: params[:token])
+        @url = params[:action] == 'edit' ? public_salesmen_visit_path(@visit, token: params[:token]) : public_salesmen_visits_path(token: params[:token])
       end
   
       # Only allow a list of trusted parameters through.
