@@ -5,3 +5,8 @@ es:
         daily: Diario
         monthly: Mensual
         yearly: Anual
+  visit:
+    statuses:
+      created: Creada
+      accomplished: Finalizada
+      not_accomplished: No finalizada

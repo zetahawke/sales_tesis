@@ -1,0 +1,21 @@
+h5 Listando visitas
+
+table
+  thead
+    tr
+      th ID
+      th Vendedor
+      th Estado
+      th
+
+  tbody
+    - @visits.each do |visit|
+      tr
+        td = visit.route.id
+        td = visit.salesman&.name
+        td = I18n.t("visit.statuses.#{visit.status}")
+        td = link_to 'Editar', edit_public_customers_visit_path(visit)
+
+br
+
+= link_to 'Nuevo Visita', new_admin_visit_path, class: 'btn btn-primary'
