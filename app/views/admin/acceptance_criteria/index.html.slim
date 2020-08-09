@@ -6,6 +6,7 @@ table
       th Name
       th Criterio
       th Criterio value
+      th Valor
       th
       th
       th
@@ -16,6 +17,7 @@ table
         td = acceptance_criterium.name
         td = acceptance_criterium.criteria
         td = acceptance_criterium.criteria_value
+        td = acceptance_criterium.hit_value
         td = link_to 'Mostrar', admin_acceptance_criterium_path(acceptance_criterium)
         td = link_to 'Editar', edit_admin_acceptance_criterium_path(acceptance_criterium)
         td = link_to 'Eliminar', admin_acceptance_criterium_path(acceptance_criterium), data: { confirm: 'Are you sure?' }, method: :delete
