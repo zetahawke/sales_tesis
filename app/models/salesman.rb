@@ -1,8 +1,8 @@
 class Salesman < ApplicationRecord
-  has_many :routes
-  has_many :visits, through: :routes
+  has_many :routes, dependent: :destroy
+  has_many :visits, through: :routes, dependent: :destroy
   has_many :customers, through: :visits
-  has_many :goals
+  has_many :goals, dependent: :destroy
   after_create :generate_private_token
   after_create :send_notification
 
