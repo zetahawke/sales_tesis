@@ -1,11 +1,18 @@
 span.card-title
   .row
-    h5
+    h5.left
       strong Name: 
       = @salesman.name
-      div.right
-        .traffic-light
-          .medium-light style="background-color: #{@traffic_light_color}"
+    div.right
+      span.fs-10
+        | Ventas
+      .traffic-light
+        .medium-light style="background-color: #{@sales_traffic_light_color}"
+    div.right.mr-10
+      span.fs-10
+        | Encuestas
+      .traffic-light
+        .medium-light style="background-color: #{@traffic_light_color}"
 .card-content
   br/
   = render 'graphic'
@@ -17,6 +24,14 @@ span.card-title
 p
   strong Token: 
   = @salesman.private_token
+p
+  strong Cumplimiento de encuestas: 
+  = @salesman.current_media_percent(params[:type], params[:date])
+  | % (al 40%)
+p
+  strong Cumplimiento de ventas: 
+  = @salesman.current_sales_percent(params[:type], params[:date])
+  | % (al 60%)
 .card-action
   = link_to 'Editar', edit_admin_salesman_path(@salesman), class: 'btn btn-primary'
   '|

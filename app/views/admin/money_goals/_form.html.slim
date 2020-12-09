@@ -1,0 +1,20 @@
+= form_for(@money_goal, local: true, url: @url) do |f|
+  - if @money_goal.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@money_goal.errors.count, "error")} prohibited this money_goal from being saved:"
+      ul
+        - @money_goal.errors.full_messages.each do |message|
+          li = message
+
+  .input-field
+    = f.label :amount
+    = f.number_field :amount
+  .input-field
+    = f.select :salesman_id, options_for_select(Salesman.all.pluck(:name, :id), @money_goal.salesman_id)
+    = f.label :salesman_id
+  .input-field
+    = f.select :type_of_criteria, options_for_select(%w(daily monthly yearly), @money_goal.type_of_criteria)
+    = f.label :type_of_criteria
+  .actions
+    = f.submit 'Guardar', class: 'btn btn-primary'
+    = link_to 'Back', admin_money_goals_path, class: 'btn btn-default'

@@ -26,7 +26,11 @@ li class="#{'active' if params[:controller].include?('acceptance_criteria')}"
   = link_to admin_acceptance_criteria_path, data: { turbolinks: 'false' } do
     i.material-icons chevron_right
     | Criterios
-li class="#{'active' if params[:controller].include?('goals')}"
+li class="#{'active' if params[:controller] == 'admin/goals'}"
   = link_to admin_goals_path, data: { turbolinks: 'false' } do
     i.material-icons chevron_right
-    | Metas
+    | M. evaluación
+li class="#{'active' if params[:controller].include?('money_goals')}"
+  = link_to admin_money_goals_path, data: { turbolinks: 'false' } do
+    i.material-icons chevron_right
+    | M. de ventas

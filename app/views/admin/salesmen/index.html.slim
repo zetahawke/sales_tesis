@@ -3,9 +3,9 @@ span.card-title
 .card-content
   br/
   .row
-    span.fs-18 Gráficos de ventas
+    span.fs-18 Gráficos
     p
-      | Gráfico de cumplimiento de espectativas del comprador.
+      | Gráfico de cumplimiento de los vendedores.
   
 
   = render 'graphic'
@@ -15,7 +15,8 @@ span.card-title
     thead
       tr
         th Nombre
-        th Indicador
+        th Indicador de cumplimiento encuestas
+        th Indicador de cumplimiento ventas
         th
         th
         th
@@ -26,7 +27,10 @@ span.card-title
           td = salesman.name
           td
             .traffic-light
-              .small-light style="background-color: #{salesman.traffic_light_for(params[:type], params[:date], @graphic_data.find { |s,v| s == salesman.name }.last)}"
+              .small-light style="background-color: #{salesman.traffic_light_for(params[:type], params[:date], 'goals')}"
+          td
+            .traffic-light
+              .small-light style="background-color: #{salesman.traffic_light_for(params[:type], params[:date], 'money_goals')}"
           td = link_to 'Mostrar', admin_salesman_path(salesman)
           td = link_to 'Editar', edit_admin_salesman_path(salesman)
           td = link_to 'Eliminar', admin_salesman_path(salesman), data: { confirm: 'Are you sure?' }, method: :delete

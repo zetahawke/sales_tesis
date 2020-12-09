@@ -1,0 +1,25 @@
+h5 Listando metas de venta
+
+table
+  thead
+    tr
+      th Monto
+      th Vendedor
+      th Tipo de criterio
+      th
+      th
+      th
+
+  tbody
+    - @money_goals.each do |money_goal|
+      tr
+        td = money_goal.amount
+        td = money_goal.salesman
+        td = money_goal.type_of_criteria
+        td = link_to 'Mostrar', admin_money_goal_path(money_goal)
+        td = link_to 'Editar', edit_admin_money_goal_path(money_goal)
+        td = link_to 'Eliminar', admin_money_goal_path(money_goal), data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'Nueva menta de venta', new_admin_money_goal_path

@@ -3,6 +3,7 @@ class Salesman < ApplicationRecord
   has_many :visits, through: :routes, dependent: :destroy
   has_many :customers, through: :visits
   has_many :goals, dependent: :destroy
+  has_many :money_goals, dependent: :destroy
   after_create :generate_private_token
   after_create :send_notification
 
@@ -19,8 +20,10 @@ class Salesman < ApplicationRecord
 
   def current_metrics(type, date)
     date = date.try(:to_date)
+    evaluation_percent = current_media_percent(type, date)
+    sales_percent = current_sales_percent(type, date)
     {
-      name => current_media_percent(type, date)
+      name => (((evaluation_percent > 100 ? 100 : evaluation_percent) || 0) * 0.4) + (((sales_percent > 100 ? 100 : sales_percent) || 0) * 0.6)
     }
   end
 
@@ -39,12 +42,25 @@ class Salesman < ApplicationRecord
     all_percents.sum / all_percents.size
   end
 
-  def traffic_light_for(type, date, percent)
-    return 'red' if type.blank? || date.blank? || percent.blank?
+  def current_sales_percent(type, date)
+    return 0 if type.blank? || date.blank?
+    
+    money_goal = send("data_#{type}", date.try(:to_date), 'money_goals').where(type_of_criteria: type).last
+    return 0 if money_goal.blank?
+    
+    data = send("data_#{type}", date, 'visits')
+    sales_amount = data.sum { |dt| dt.sale_amount }
 
-    goal = send("data_#{type}", date.try(:to_date), 'goals').where(type_of_criteria: type).last
+    (100.0 / (money_goal.amount.try(:to_f) || 0)) * sales_amount.try(:to_f)
+  end
+
+  def traffic_light_for(type, date, type_of_criteria = 'goals')
+    return 'red' if type.blank? || date.blank?
+    
+    goal = send("data_#{type}", date.try(:to_date), type_of_criteria).where(type_of_criteria: type).last
     return 'red' unless goal
-
+    
+    percent = type_of_criteria == 'goals' ? current_media_percent(type, date) : current_sales_percent(type, date)
     goal.traffic_light_color(percent)
   end
 

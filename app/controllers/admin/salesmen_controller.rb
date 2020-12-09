@@ -101,7 +101,8 @@ module Admin
     end
 
     def set_traffic_light_color
-      @traffic_light_color = @salesman.traffic_light_for(params[:type], params[:date], @graphic_data.values.first || 0)
+      @traffic_light_color = @salesman.traffic_light_for(params[:type], params[:date], 'goals')
+      @sales_traffic_light_color = @salesman.traffic_light_for(params[:type], params[:date], 'money_goals')
     end
   end
 end

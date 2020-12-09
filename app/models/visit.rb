@@ -23,7 +23,13 @@ class Visit < ApplicationRecord
     end
 
     def exclude_excused
-      left_outer_joins(:excuse).group("visits.id, excuses.valid_argument").having("COUNT(excuses) = 0 OR (COUNT(excuses) > 0 AND excuses.valid_argument = ?)", false)     
+      # joins(:excuse).where(excuses: { valid_argument: false })
+      left_outer_joins(:excuse).group("visits.id, excuses.valid_argument").having("(COUNT(excuses) = 0) OR (COUNT(excuses) > 0 AND excuses.valid_argument = ?)", false)
+      # select do |visit|
+      #   return true if visit.excuse.blank?
+        
+      #   !visit.excuse.valid_argument
+      # end
     end
   end
 

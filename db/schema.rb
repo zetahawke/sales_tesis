@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_09_224604) do
+ActiveRecord::Schema.define(version: 2020_12_09_023253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,15 @@ ActiveRecord::Schema.define(version: 2020_08_09_224604) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["salesman_id"], name: "index_goals_on_salesman_id"
+  end
+
+  create_table "money_goals", force: :cascade do |t|
+    t.integer "amount"
+    t.bigint "salesman_id", null: false
+    t.string "type_of_criteria"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["salesman_id"], name: "index_money_goals_on_salesman_id"
   end
 
   create_table "product_tags", force: :cascade do |t|
@@ -179,6 +188,7 @@ ActiveRecord::Schema.define(version: 2020_08_09_224604) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status", default: 0
+    t.float "sale_amount", default: 0.0
     t.index ["customer_id"], name: "index_visits_on_customer_id"
     t.index ["route_id"], name: "index_visits_on_route_id"
   end
@@ -188,6 +198,7 @@ ActiveRecord::Schema.define(version: 2020_08_09_224604) do
   add_foreign_key "answers", "questions"
   add_foreign_key "excuses", "visits"
   add_foreign_key "goals", "salesmen"
+  add_foreign_key "money_goals", "salesmen"
   add_foreign_key "product_tags", "products"
   add_foreign_key "product_tags", "tags"
   add_foreign_key "products", "categories"

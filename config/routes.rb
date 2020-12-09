@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     end
     resources :routes
     resources :goals
+    resources :money_goals
+
     resources :salesmen do
       get 'create_token'
     end
