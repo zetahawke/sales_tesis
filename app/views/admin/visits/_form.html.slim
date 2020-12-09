@@ -12,6 +12,9 @@
   .input-field
     = f.select :route_id, options_for_select(Route.joins(:salesman).select('salesmen.name, routes.id').pluck(:name, :id), @visit.route_id)
     = f.label "Vendedor's route"
+  .input-field
+    = f.label :sale_amount
+    = f.number_field :sale_amount
   
   = f.fields_for :excuse do |excuse_f|
     .input-field

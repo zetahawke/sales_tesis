@@ -26,11 +26,11 @@ p
   = @salesman.private_token
 p
   strong Cumplimiento de encuestas: 
-  = @salesman.current_media_percent(params[:type], params[:date])
+  = @salesman.current_media_percent(params[:type], params[:date]).round(2)
   | % (al 40%)
 p
   strong Cumplimiento de ventas: 
-  = @salesman.current_sales_percent(params[:type], params[:date])
+  = @salesman.current_sales_percent(params[:type], params[:date]).round(2)
   | % (al 60%)
 .card-action
   = link_to 'Editar', edit_admin_salesman_path(@salesman), class: 'btn btn-primary'
