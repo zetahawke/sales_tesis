@@ -1,4 +1,4 @@
-= form_for(@satisfaction_questionary, local: true, url: @url) do |f|
+= form_for(@satisfaction_questionary, local: true, url: create_massive_admin_satisfaction_questionaries_path) do |f|
   - if @satisfaction_questionary.errors.any?
     #error_explanation
       h2 = "#{pluralize(@satisfaction_questionary.errors.count, "error")} prohibited this satisfaction_questionary from being saved:"

@@ -31,6 +31,10 @@ class Visit < ApplicationRecord
       #   !visit.excuse.valid_argument
       # end
     end
+
+    def unquestioned
+      left_outer_joins(:satisfaction_questionary).having("COUNT(satisfaction_questionaries.id) < 1").group("visits.id")
+    end
   end
 
   def match_name

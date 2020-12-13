@@ -25,6 +25,9 @@ p
   strong Token: 
   = @salesman.private_token
 p
+  strong Acceso privado: 
+  = link_to 'Link', "/public/salesmen/visits?token=#{@salesman.private_token}", target: '_blank'
+p
   strong Cumplimiento de encuestas: 
   = @salesman.current_media_percent(params[:type], params[:date]).round(2)
   | % (al 40%)
@@ -32,6 +35,9 @@ p
   strong Cumplimiento de ventas: 
   = @salesman.current_sales_percent(params[:type], params[:date]).round(2)
   | % (al 60%)
+p
+  strong Ventas acumuladas a del periodo: 
+  = number_to_currency(@salesman.amount_of_sales(params[:type], params[:date]), precision: 0, delimiter: '.')
 .card-action
   = link_to 'Editar', edit_admin_salesman_path(@salesman), class: 'btn btn-primary'
   '|

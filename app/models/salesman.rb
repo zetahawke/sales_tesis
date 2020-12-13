@@ -92,4 +92,9 @@ class Salesman < ApplicationRecord
   def public_visits_url
     "#{Rails.configuration.public_url}/public/salesmen/visits?token=#{private_token}"
   end
+
+  def amount_of_sales(type, date)
+    countable_visits = send("data_#{type}", date&.to_date, 'visits')
+    countable_visits.blank? ? 0 : countable_visits.sum(&:sale_amount)
+  end
 end

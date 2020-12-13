@@ -8,7 +8,12 @@ Rails.application.routes.draw do
     get '/', to: 'home#index', as: :root
     resources :questions
     resources :acceptance_criteria
-    resources :satisfaction_questionaries
+    resources :satisfaction_questionaries do
+      collection do
+        get 'new_massive'
+        post 'create_massive'
+      end
+    end
     resources :visits
     resources :customers do
       get 'create_token'

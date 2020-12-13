@@ -19,6 +19,11 @@ module Admin
       @satisfaction_questionary = SatisfactionQuestionary.new
     end
   
+    # GET /satisfaction_questionaries/new
+    def new_massive
+      @satisfaction_questionary = SatisfactionQuestionary.new
+    end
+  
     # GET /satisfaction_questionaries/1/edit
     def edit
     end
@@ -32,6 +37,19 @@ module Admin
         if @satisfaction_questionary.save
           format.html { redirect_to admin_satisfaction_questionary_path(@satisfaction_questionary), notice: 'Satisfaction questionary was successfully created.' }
           format.json { render :show, status: :created, location: @satisfaction_questionary }
+        else
+          format.html { render :new }
+          format.json { render json: @satisfaction_questionary.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
+    def create_massive
+      @satisfaction_questionaries = SatisfactionQuestionary.save_massive(satisfaction_questionary_params, salesmen_params)
+      respond_to do |format|
+        if @satisfaction_questionaries
+          format.html { redirect_to admin_satisfaction_questionaries_path, notice: 'Satisfaction questionaries was successfully created.' }
+          format.json { render json: { status: :created, location: @satisfaction_questionaries } }
         else
           format.html { render :new }
           format.json { render json: @satisfaction_questionary.errors, status: :unprocessable_entity }
@@ -76,6 +94,10 @@ module Admin
       # Only allow a list of trusted parameters through.
       def satisfaction_questionary_params
         params.require(:satisfaction_questionary).permit(:visit_id, questions: [])
+      end
+
+      def salesmen_params
+        params.require(:satisfaction_questionary).permit(salesmen: [])
       end
   end
 end

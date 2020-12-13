@@ -10,6 +10,9 @@ p
 p
   strong Token: 
   = @customer.private_token
+p
+  strong Acceso privado: 
+  = link_to 'Link', "/public/customers/visits?token=#{@customer.private_token}", target: '_blank'
 
 = link_to 'Editar', edit_admin_customer_path(@customer), class: 'btn btn-primary'
 '|

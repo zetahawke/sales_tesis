@@ -9,6 +9,22 @@ class SatisfactionQuestionary < ApplicationRecord
 
   delegate :match_name, to: :visit, prefix: true
 
+  class << self
+    def save_massive(sq_params, salesmen_params)
+      salesmen_params[:salesmen].each do |salesman_id|
+        salesman = Salesman.find_by(id: salesman_id)
+        next unless salesman_id
+
+        salesman.visits.unquestioned.each do |visit|
+          SatisfactionQuestionary.create(visit_id: visit.id, questions: sq_params[:questions])
+        end
+      end
+      true
+    rescue StandardError => _e
+      false
+    end
+  end
+
   def found_questions
     Question.where(id: questions || [])
   end
