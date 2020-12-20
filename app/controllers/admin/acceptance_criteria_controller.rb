@@ -75,7 +75,7 @@ module Admin
   
       # Only allow a list of trusted parameters through.
       def acceptance_criterium_params
-        params.require(:acceptance_criterium).permit(:name, :criteria, :criteria_value)
+        params.require(:acceptance_criterium).permit(:name, :criteria, :criteria_value, :hit_value)
       end
   end
 end

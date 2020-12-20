@@ -1,9 +1,9 @@
 class Visit < ApplicationRecord
   belongs_to :customer
   belongs_to :route
-  has_one :satisfaction_questionary
+  has_one :satisfaction_questionary, dependent: :destroy
   has_one :salesman, through: :route
-  has_one :excuse
+  has_one :excuse, dependent: :destroy
 
   accepts_nested_attributes_for :excuse
 

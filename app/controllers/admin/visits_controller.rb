@@ -75,7 +75,7 @@ module Admin
 
       # Only allow a list of trusted parameters through.
       def visit_params
-        params.require(:visit).permit(:customer_id, :route_id)
+        params.require(:visit).permit(:customer_id, :route_id, :sale_amount)
       end
 
       def excuse_params
