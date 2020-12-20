@@ -30,7 +30,7 @@ class Salesman < ApplicationRecord
   def current_media_percent(type, date)
     return 0 if type.blank? || date.blank?
 
-    data = send("data_#{type}", date, 'visits')
+    data = send("data_#{type}", date.try(:to_date), 'visits')
     all_percents = data.map do |visit|
       sq = visit.satisfaction_questionary
       next unless sq

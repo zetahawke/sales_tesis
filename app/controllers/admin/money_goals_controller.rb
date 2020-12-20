@@ -70,7 +70,7 @@ module Admin
       end
 
       def set_form_url
-        @url = params[:action] == 'edit' ? admin_money_goal_path(@goal) : admin_money_goals_path
+        @url = params[:action] == 'edit' ? admin_money_goal_path(@money_goal) : admin_money_goals_path
       end
 
       # Only allow a list of trusted parameters through.
