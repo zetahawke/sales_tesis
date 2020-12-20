@@ -13,8 +13,8 @@ table
   tbody
     - @money_goals.each do |money_goal|
       tr
-        td = money_goal.amount
-        td = money_goal.salesman
+        td = number_to_currency(money_goal.amount, precision: 0, delimiter: '.')
+        td = money_goal.salesman.name
         td = money_goal.type_of_criteria
         td = link_to 'Mostrar', admin_money_goal_path(money_goal)
         td = link_to 'Editar', edit_admin_money_goal_path(money_goal)
