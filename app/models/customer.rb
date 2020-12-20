@@ -1,6 +1,6 @@
 class Customer < ApplicationRecord
   has_many :visits, dependent: :destroy
-  has_many :answers, dependet: :destroy
+  has_many :answers, dependent: :destroy
   after_create :generate_private_token
   after_create :send_notification
 
