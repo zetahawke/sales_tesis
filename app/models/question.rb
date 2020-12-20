@@ -1,5 +1,5 @@
 class Question < ApplicationRecord
-  has_one :answer, dependent: :destroy
+  has_many :answers, dependent: :destroy
 
   before_destroy :erase_question_from_satisfaction_questionaries
 
