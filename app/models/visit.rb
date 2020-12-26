@@ -4,8 +4,9 @@ class Visit < ApplicationRecord
   has_one :satisfaction_questionary, dependent: :destroy
   has_one :salesman, through: :route
   has_one :excuse, dependent: :destroy
+  has_one :appointment
 
-  accepts_nested_attributes_for :excuse
+  accepts_nested_attributes_for :excuse, :appointment
 
   enum status: { created: 0, accomplished: 1, not_accomplished: 2 }
 
@@ -23,13 +24,7 @@ class Visit < ApplicationRecord
     end
 
     def exclude_excused
-      # joins(:excuse).where(excuses: { valid_argument: false })
       left_outer_joins(:excuse).group("visits.id, excuses.valid_argument").having("(COUNT(excuses) = 0) OR (COUNT(excuses) > 0 AND excuses.valid_argument = ?)", false)
-      # select do |visit|
-      #   return true if visit.excuse.blank?
-        
-      #   !visit.excuse.valid_argument
-      # end
     end
 
     def unquestioned

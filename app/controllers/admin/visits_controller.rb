@@ -16,7 +16,14 @@ module Admin
   
     # GET /visits/new
     def new
-      @visit = Visit.new
+      if params[:salesman_id]
+        salesman = Salesman.find_by(id: params[:salesman_id])
+        prev_amount = salesman ? salesman.visits.last.try(:amount) : 0.0
+        @visit = Visit.new(sale_amount: prev_amount || 500_000.0)
+      else
+        @visit = Visit.build
+      end
+      @visit.appointment ||= Appointment.new
     end
   
     # GET /visits/1/edit

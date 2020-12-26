@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_023253) do
+ActiveRecord::Schema.define(version: 2020_12_26_164115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,18 @@ ActiveRecord::Schema.define(version: 2020_12_09_023253) do
     t.integer "acceptance_criterium_id", null: false
     t.index ["customer_id"], name: "index_answers_on_customer_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "start_at", default: "2020-12-29 16:42:32"
+    t.datetime "ends_at", default: "2021-01-02 16:42:32"
+    t.datetime "appointed_at", default: "2020-12-30 16:42:32"
+    t.datetime "realized_at"
+    t.boolean "accomplished", default: false
+    t.bigint "visit_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["visit_id"], name: "index_appointments_on_visit_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -196,6 +208,7 @@ ActiveRecord::Schema.define(version: 2020_12_09_023253) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "customers"
   add_foreign_key "answers", "questions"
+  add_foreign_key "appointments", "visits"
   add_foreign_key "excuses", "visits"
   add_foreign_key "goals", "salesmen"
   add_foreign_key "money_goals", "salesmen"

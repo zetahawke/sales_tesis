@@ -19,7 +19,6 @@ span.card-title
         th Indicador de cumplimiento ventas
         th
         th
-        th
 
     tbody
       - @salesmen.each do |salesman|
@@ -31,9 +30,12 @@ span.card-title
           td
             .traffic-light
               .small-light style="background-color: #{salesman.traffic_light_for(params[:type], params[:date], 'money_goals')}"
-          td = link_to 'Mostrar', admin_salesman_path(salesman)
-          td = link_to 'Editar', edit_admin_salesman_path(salesman)
-          td = link_to 'Eliminar', admin_salesman_path(salesman), data: { confirm: 'Are you sure?' }, method: :delete
+          td
+            = link_to 'Nueva visita', new_admin_visit_path(salesman_id: salesman.id)
+          td 
+            = link_to 'Mostrar', admin_salesman_path(salesman), style: 'margin-right: 10px;'
+            = link_to 'Editar', edit_admin_salesman_path(salesman), style: 'margin-right: 10px;'
+            = link_to 'Eliminar', admin_salesman_path(salesman), data: { confirm: 'Are you sure?' }, method: :delete
 
   br
 
