@@ -3,6 +3,7 @@ module Public
     class VisitsController < Public::TokenizedController
       before_action :set_visit, only: [:show, :edit, :update, :destroy]
       before_action :set_form_url, only: [:edit, :new]
+      before_action :validate_excuse, only: [:update]
     
       # GET /visits
       # GET /visits.json
@@ -23,7 +24,7 @@ module Public
       # PATCH/PUT /visits/1.json
       def update
         respond_to do |format|
-          if @visit.update(visit_params)
+          if @visit.update(to_update_params)
             format.html { redirect_to public_salesmen_visits_path(token: params[:token]), notice: 'Visit was successfully updated.' }
             format.json { render :index, status: :ok }
           else
@@ -45,7 +46,23 @@ module Public
   
       # Only allow a list of trusted parameters through.
       def visit_params
-        params.require(:visit).permit(excuse_attributes: [:reason])
+        params.require(:visit).permit(:sale_amount, excuse_attributes: [:reason], appointment_attributes: [:realized_at])
+      end
+
+      def validate_excuse
+        if visit_params[:excuse_attributes][:reason].blank?
+          if visit_params[:appointment_attributes][:realized_at].blank? || visit_params[:sale_amount].blank?
+            redirect_to edit_public_salesmen_visit_path(@visit, token: params[:token]), alert: 'En caso de no excusar la visita, debes rellenar el monto de la venta y la fecha de la visita realizada.'
+          end
+        end
+      end
+
+      def to_update_params
+        if visit_params[:excuse_attributes][:reason].blank?
+          params.require(:visit).permit(:sale_amount, appointment_attributes: [:realized_at])
+        else
+          params.require(:visit).permit(excuse_attributes: [:reason])
+        end
       end
     end
   end
