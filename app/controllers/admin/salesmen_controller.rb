@@ -97,7 +97,7 @@ module Admin
     end
 
     def set_graphic_data
-      @graphic_data = params[:action] == 'index' ? @salesmen.all_media_percent(params[:type], params[:date]) : @salesman.current_metrics(params[:type], params[:date])
+      @graphic_data = params[:action] == 'index' ? @salesmen.all_media_percent(params[:type], params[:date]) : @salesman.show_current_metrics(params[:type], params[:date])
     end
 
     def set_traffic_light_color

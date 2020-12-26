@@ -27,6 +27,17 @@ class Salesman < ApplicationRecord
     }
   end
 
+  def show_current_metrics(type, date)
+    date = date.try(:to_date)
+    evaluation_percent = current_media_percent(type, date)
+    sales_percent = current_sales_percent(type, date)
+    {
+      'ventas' => ((sales_percent > 100 ? 100 : sales_percent) || 0),
+      'evaluaciones' => ((evaluation_percent > 100 ? 100 : evaluation_percent) || 0),
+      'promedio' => (((evaluation_percent > 100 ? 100 : evaluation_percent) || 0) * 0.4) + (((sales_percent > 100 ? 100 : sales_percent) || 0) * 0.6)
+    }
+  end
+
   def current_media_percent(type, date)
     return 0 if type.blank? || date.blank?
 
