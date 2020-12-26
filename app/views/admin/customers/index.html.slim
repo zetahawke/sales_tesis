@@ -1,11 +1,13 @@
-h5 Listando clientes
+h5 Listado de clientes
 
 table
   thead
     tr
-      th Name
+      th Nombre
       th Dni
       th Email
+      th Teléfono
+      th De baja?
       th
 
   tbody
@@ -14,11 +16,12 @@ table
         td = customer.name
         td = customer.dni
         td = customer.email
+        td = customer.phone
+        td = customer.archived
         td
           .right
             = link_to 'Mostrar', admin_customer_path(customer), style: 'margin-right: 10px;'
-            = link_to 'Editar', edit_admin_customer_path(customer), style: 'margin-right: 10px;'
-            = link_to 'Eliminar', admin_customer_path(customer), data: { confirm: 'Are you sure?' }, method: :delete
+            = link_to 'Dar de baja', admin_customer_path(customer), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 

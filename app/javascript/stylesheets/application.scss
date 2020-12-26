@@ -1,13 +1,18 @@
-@import '../../assets/stylesheets/application';
-@import '../../assets/stylesheets/tools';
+@import "../../assets/stylesheets/application";
+@import "../../assets/stylesheets/tools";
 @import "materialize-css/sass/components/_color-variables";
 $primary-color: #8914ad !default;
 $secondary-color: #4db6ac !default;
-@import 'node_modules/materialize-css/sass/materialize.scss';
+@import "node_modules/materialize-css/sass/materialize.scss";
 
-body, html {
-  height:100%;
+body,
+html {
+  height: 100%;
   background-color: #eeeeee;
+}
+
+hr {
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .main-cont {
@@ -29,7 +34,9 @@ body, html {
   overflow: auto;
 }
 
-.card.small .card-image + .card-content, .card.medium .card-image + .card-content, .card.large .card-image + .card-content {
+.card.small .card-image + .card-content,
+.card.medium .card-image + .card-content,
+.card.large .card-image + .card-content {
   max-height: 58%;
 }
 
@@ -37,14 +44,19 @@ body, html {
   font-size: 1.5rem;
 }
 
-.login-mobile{
+.login-mobile {
   position: absolute;
   bottom: 60px;
 }
 
 .traffic-light-gradient {
-  background: rgb(255,0,0);
-  background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(245,255,0,1) 53%, rgba(0,255,132,1) 93%);
+  background: rgb(255, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(245, 255, 0, 1) 53%,
+    rgba(0, 255, 132, 1) 93%
+  );
 }
 
 .traffic-light {
@@ -81,14 +93,10 @@ body, html {
 }
 
 @media (max-width: 600px) {
-
 }
 @media (min-width: 601px) and (max-width: 992px) {
-
 }
 @media (min-width: 993px) and (max-width: 1200px) {
-
 }
 @media (min-width: 1201px) {
-
 }

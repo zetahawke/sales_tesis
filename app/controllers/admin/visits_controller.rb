@@ -21,13 +21,16 @@ module Admin
         prev_amount = salesman ? salesman.visits.last.try(:amount) : 0.0
         @visit = Visit.new(sale_amount: prev_amount || 500_000.0)
       else
-        @visit = Visit.build
+        @visit = Visit.new
       end
       @visit.appointment ||= Appointment.new
+      @visit.excuse ||= Excuse.new
     end
   
     # GET /visits/1/edit
     def edit
+      @visit.appointment ||= Appointment.new
+      @visit.excuse ||= Excuse.new
     end
   
     # POST /visits
@@ -50,7 +53,7 @@ module Admin
     # PATCH/PUT /visits/1.json
     def update
       respond_to do |format|
-        if @visit.update(visit_params) && @visit.excuse.update(excuse_params)
+        if @visit.update(visit_params) && @visit.excuse.update(excuse_params) && @visit.appointment.update(appointment_params)
           format.html { redirect_to admin_visit_path(@visit), notice: 'Visit was successfully updated.' }
           format.json { render :show, status: :ok, location: @visit }
         else
@@ -82,11 +85,15 @@ module Admin
 
       # Only allow a list of trusted parameters through.
       def visit_params
-        params.require(:visit).permit(:customer_id, :route_id, :sale_amount)
+        params.require(:visit).permit(:customer_id, :route_id, :sale_amount, :status)
       end
 
       def excuse_params
         params[:visit].require(:excuse_attributes).permit(:valid_argument)
+      end
+
+      def appointment_params
+        params[:visit].require(:appointment_attributes).permit(:appointed_at, :realized_at, :start_at, :ends_at, :accomplished)
       end
   end
 end

@@ -10,3 +10,19 @@ es:
       created: Creada
       accomplished: Completada
       not_accomplished: No completada
+    true: Sí
+    false: No
+    nil: No
+  activerecord:
+    errors:
+      models:
+        customer:
+          attributes:
+            email:
+              invalid: 'El Email no tiene un formato correcto.'
+              taken: 'El correo ya está registrado.'
+            phone:
+              invalid: 'El formato del teléfono no es correcto.'
+            dni:
+              invalid: 'El formato del rut no es correcto.'
+              taken: 'El Rut ya está registrado.'

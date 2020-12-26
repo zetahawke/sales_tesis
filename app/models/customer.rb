@@ -4,6 +4,14 @@ class Customer < ApplicationRecord
   after_create :generate_private_token
   after_create :send_notification
 
+  validates :email, email: true
+  validates :dni, rut: true
+  validates :phone, phone: { possible: true, allow_blank: true, types: [:voip, :mobile], countries: [:cl] }
+
+  validates_uniqueness_of :dni
+  validates_uniqueness_of :email
+
+
   def generate_private_token
     token = Devise.friendly_token
     update_columns(private_token: token)

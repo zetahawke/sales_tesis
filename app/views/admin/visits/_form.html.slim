@@ -13,9 +13,11 @@
     = f.select :route_id, options_for_select(Route.joins(:salesman).select('salesmen.name, routes.id').pluck(:name, :id), @visit.route_id)
     = f.label "Vendedor's route"
   .input-field
-    = f.label :sale_amount
     = f.number_field :sale_amount
-
+    = f.label :sale_amount
+  .input-field
+    = f.select :status, options_for_select(Visit.statuses.keys.map { |status_key| [I18n.t("visit.statuses.#{status_key}"), status_key] }, @visit.status)
+    = f.label :status
   = f.fields_for :appointment do |appo_f|
     .input-field
       = appo_f.datetime_field :appointed_at, style: 'max-width: 300px;'
@@ -30,6 +32,8 @@
         span Excusa válida?
 
 
+  br/
+  br/
   br/
 
   .actions

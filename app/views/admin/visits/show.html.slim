@@ -7,10 +7,31 @@ p
   |  Route
 p
   strong Excusa: 
-  = @visit.excuse ? @visit.excuse&.reason[0..50] : 'No aplica'
+  = @visit.excuse && @visit.excuse&.reason ? @visit.excuse&.reason[0..50] : 'No aplica'
 p
-  strong Aceptada: 
+  strong Excusa Aceptada: 
   = @visit.excuse ? (@visit.excuse&.valid_argument&.to_s == 'true' ? 'Sí' : 'No') : 'No aplica'
+
+p
+  strong Estado: 
+  = I18n.t("visit.statuses.#{@visit.status}")
+
+- if @visit.appointment
+  p
+    strong Cita desde: 
+    = @visit.appointment.start_at.strftime('%d-%m-%Y')
+  p
+    strong Cita hasta: 
+    = @visit.appointment.ends_at.strftime('%d-%m-%Y')
+  p
+    strong Cita para: 
+    = @visit.appointment.appointed_at.strftime('%d-%m-%Y')
+  p
+    strong Cita realizada: 
+    = @visit.appointment.realized_at ? @visit.appointment.realized_at.strftime('%d-%m-%Y') : 'Aún no'
+  p
+    strong Cita dentro de plazo: 
+    = I18n.t("visit.#{@visit.appointment.accomplished}")
 
 = link_to 'Editar', edit_admin_visit_path(@visit), class: 'btn btn-primary right'
 = link_to 'Back', admin_visits_path, class: 'btn btn-default'

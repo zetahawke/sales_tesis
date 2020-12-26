@@ -33,7 +33,7 @@ module Admin
           format.html { redirect_to admin_customer_path(@customer), notice: 'Customer was successfully created.' }
           format.json { render :show, status: :created, location: @customer }
         else
-          format.html { render :new }
+          format.html { redirect_to new_admin_customer_path, alert: @customer.errors.messages.values.join("\n") }
           format.json { render json: @customer.errors, status: :unprocessable_entity }
         end
       end
@@ -56,7 +56,7 @@ module Admin
     # DELETE /customers/1
     # DELETE /customers/1.json
     def destroy
-      @customer.destroy
+      @customer.update(archived: true)
       respond_to do |format|
         format.html { redirect_to admin_customers_url, notice: 'Customer was successfully destroyed.' }
         format.json { head :no_content }
@@ -82,7 +82,7 @@ module Admin
   
       # Only allow a list of trusted parameters through.
       def customer_params
-        params.require(:customer).permit(:name, :dni, :email)
+        params.require(:customer).permit(:name, :dni, :email, :phone)
       end
   end
 end

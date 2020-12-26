@@ -61,3 +61,6 @@ gem "slim-rails"
 gem 'devise'
 gem 'letter_opener'
 gem "chartkick"
+gem 'email_validator'
+gem 'rut_validation'
+gem 'phonelib'

@@ -1,4 +1,4 @@
-h5 Listando visitas
+h5 Listado de visitas
 
 table
   thead
@@ -19,7 +19,7 @@ table
           |  ruta: 
           = visit.route.id
         td = I18n.t("visit.statuses.#{visit.status}")
-        td = visit.excuse ? visit.excuse&.reason[0..50] : 'No aplica'
+        td = visit.excuse && visit.excuse&.reason ? visit.excuse&.reason[0..50] : 'No aplica'
         td = visit.excuse ? (visit.excuse&.valid_argument&.to_s == 'true' ? 'Sí' : 'No') : 'No aplica'
         td
           .right

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_26_164115) do
+ActiveRecord::Schema.define(version: 2020_12_26_201042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,9 +57,9 @@ ActiveRecord::Schema.define(version: 2020_12_26_164115) do
   end
 
   create_table "appointments", force: :cascade do |t|
-    t.datetime "start_at", default: "2020-12-29 16:42:32"
-    t.datetime "ends_at", default: "2021-01-02 16:42:32"
-    t.datetime "appointed_at", default: "2020-12-30 16:42:32"
+    t.datetime "start_at", default: "2020-12-29 17:18:49"
+    t.datetime "ends_at", default: "2021-01-02 17:18:49"
+    t.datetime "appointed_at", default: "2020-12-30 17:18:49"
     t.datetime "realized_at"
     t.boolean "accomplished", default: false
     t.bigint "visit_id", null: false
@@ -82,6 +82,8 @@ ActiveRecord::Schema.define(version: 2020_12_26_164115) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "email"
     t.string "private_token"
+    t.string "phone"
+    t.boolean "archived", default: false
   end
 
   create_table "excuses", force: :cascade do |t|
