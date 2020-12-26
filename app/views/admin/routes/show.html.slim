@@ -1,6 +1,46 @@
 h5
+  strong Ruta: 
+  = @route.id
+p
   strong Vendedor: 
   = @route.salesman&.name
+p
+  strong Creada el: 
+  = @route.created_at.strftime('%d-%m-%Y')
+p
+  strong Mes: 
+  = @route.created_at.strftime('%m-%Y')
+
+br/
+hr/
+
+- if @route.visits.blank?
+  p
+    h5 Visitas: 
+    | Sin visitas aún
+- else
+  h5
+    strong Visitas del mes
+  table
+    thead
+      tr
+        th Cliente
+        th Estado
+        th Fecha estimada
+        th
+
+    tbody
+      - @route.visits.each do |visit|
+        tr
+          td = visit.customer&.name
+          td = I18n.t("visit.statuses.#{visit.status}")
+          td = visit.appointment && visit.appointment.appointed_at ? visit.appointment.appointed_at.strftime('%d-%m-%Y') : 'Aún no está programada'
+          td
+            .right
+              = link_to 'Mostrar', admin_visit_path(visit), style: 'margin-right: 10px;'
+
+br/
+br/
 
 = link_to 'Editar', edit_admin_route_path(@route), class: 'btn btn-primary right'
 = link_to 'Back', admin_routes_path, class: 'btn btn-default'

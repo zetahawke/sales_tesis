@@ -2,11 +2,12 @@ module Admin
   class RoutesController < AdminController
     before_action :set_route, only: [:show, :edit, :update, :destroy]
     before_action :set_form_url, only: [:edit, :new]
+    before_action :set_filter_params, only: [:index]
   
     # GET /routes
     # GET /routes.json
     def index
-      @routes = Route.all
+      @routes = Route.data_by(params[:type], params[:date].to_date)
     end
   
     # GET /routes/1
@@ -33,7 +34,7 @@ module Admin
           format.html { redirect_to admin_route_path(@route), notice: 'Route was successfully created.' }
           format.json { render :show, status: :created, location: @route }
         else
-          format.html { render :new }
+          format.html { redirect_to new_admin_route_path(@route), alert: @route.errors.messages.values.join("\n") }
           format.json { render json: @route.errors, status: :unprocessable_entity }
         end
       end
@@ -76,6 +77,11 @@ module Admin
       # Only allow a list of trusted parameters through.
       def route_params
         params.require(:route).permit(:salesman_id)
+      end
+
+      def set_filter_params
+        params[:type] ||= 'monthly'
+        params[:date] ||= Date.current
       end
   end
 end

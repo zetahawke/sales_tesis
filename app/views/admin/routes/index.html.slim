@@ -1,15 +1,32 @@
 h5 Listado de rutas
-
+br/
+form action="#{params[:action] == 'index' ? admin_routes_path : admin_route_path(@route)}" method="get"
+  .row
+    .col.s12.m3
+      .row
+        label for='type' Tipo
+      .row
+        - %w(monthly yearly).each do |type|
+          label.left.mr-10
+            = "<input name='type' type='radio' value='#{type}' #{'checked' if params[:type] == type} />".html_safe
+            span = I18n.t("salesman.filters.type.#{type}")
+    .col.s12.m2
+      label for='date' Fecha
+      input type="text" class="datepicker" name='date' value="#{params[:date]}"
+    .col.s12.m2
+      button.btn.btn-default.mt-30 type='submit' Buscar
 table
   thead
     tr
       th Vendedor
+      th Fecha
       th
 
   tbody
     - @routes.each do |route|
       tr
         td = route.salesman&.name
+        td = route.created_at.strftime('%d-%m-%Y')
         td
           .right
             = link_to 'Mostrar', admin_route_path(route), style: 'margin-right: 10px;'
