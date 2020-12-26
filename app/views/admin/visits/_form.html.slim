@@ -10,11 +10,11 @@
     = f.select :customer_id, options_for_select(Customer.all.pluck(:name, :id), @visit.customer_id)
     = f.label :customer
   .input-field
-    = f.select :route_id, options_for_select(Route.joins(:salesman).select('salesmen.name, routes.id').pluck(:name, :id), @visit.route_id)
-    = f.label "Vendedor's route"
+    = select_tag 'salesman_id', options_for_select(Salesman.all.pluck(:name, :id), @visit.route.try(:salesman).try(:id))
+    label for='salesman_id' Ruta del vendedor
   .input-field
     = f.number_field :sale_amount
-    = f.label :sale_amount
+    = f.label :sale_amount, class: 'active'
   .input-field
     = f.select :status, options_for_select(Visit.statuses.keys.map { |status_key| [I18n.t("visit.statuses.#{status_key}"), status_key] }, @visit.status)
     = f.label :status

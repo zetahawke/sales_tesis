@@ -24,7 +24,13 @@ module Public
       # PATCH/PUT /visits/1.json
       def update
         respond_to do |format|
+          if excuse_sent
+            @visit.excuse.update(to_update_params[:excuse_attributes])
+          else
+            @visit.appointment.update(appointment_params[:appointment_attributes])
+          end
           if @visit.update(to_update_params)
+            @visit.check_appointment_accomplishment
             format.html { redirect_to public_salesmen_visits_path(token: params[:token]), notice: 'Visit was successfully updated.' }
             format.json { render :index, status: :ok }
           else
@@ -35,7 +41,6 @@ module Public
       end
   
       private
-      # Use callbacks to share common setup or constraints between actions.
       def set_visit
         @visit = Visit.find(params[:id])
       end
@@ -49,20 +54,28 @@ module Public
         params.require(:visit).permit(:sale_amount, excuse_attributes: [:reason], appointment_attributes: [:realized_at])
       end
 
+      def excuse_sent
+        !visit_params[:excuse_attributes][:reason].blank?
+      end
+
+      def valid_parameters
+        !excuse_sent && visit_params[:appointment_attributes][:realized_at].blank? || visit_params[:sale_amount].blank?
+      end
+
       def validate_excuse
-        if visit_params[:excuse_attributes][:reason].blank?
-          if visit_params[:appointment_attributes][:realized_at].blank? || visit_params[:sale_amount].blank?
-            redirect_to edit_public_salesmen_visit_path(@visit, token: params[:token]), alert: 'En caso de no excusar la visita, debes rellenar el monto de la venta y la fecha de la visita realizada.'
-          end
-        end
+        redirect_to edit_public_salesmen_visit_path(@visit, token: params[:token]), alert: 'En caso de no excusar la visita, debes rellenar el monto de la venta y la fecha de la visita realizada.' if valid_parameters
       end
 
       def to_update_params
-        if visit_params[:excuse_attributes][:reason].blank?
-          params.require(:visit).permit(:sale_amount, appointment_attributes: [:realized_at])
-        else
+        if excuse_sent
           params.require(:visit).permit(excuse_attributes: [:reason])
+        else
+          params.require(:visit).permit(:sale_amount)
         end
+      end
+
+      def appointment_params
+        params.require(:visit).permit(appointment_attributes: [:realized_at])
       end
     end
   end

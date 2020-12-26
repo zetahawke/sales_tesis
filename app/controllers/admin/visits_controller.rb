@@ -37,13 +37,14 @@ module Admin
     # POST /visits.json
     def create
       @visit = Visit.new(visit_params)
+      @visit.fill_route_id(params[:salesman_id])
   
       respond_to do |format|
         if @visit.save
           format.html { redirect_to admin_visit_path(@visit), notice: 'Visit was successfully created.' }
           format.json { render :show, status: :created, location: @visit }
         else
-          format.html { render :new }
+          format.html { redirect_to new_admin_visit_path(@visit), alert: @visit.errors.messages.values.join("\n") }
           format.json { render json: @visit.errors, status: :unprocessable_entity }
         end
       end

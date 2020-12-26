@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_26_201042) do
+ActiveRecord::Schema.define(version: 2020_12_26_214900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -203,6 +203,7 @@ ActiveRecord::Schema.define(version: 2020_12_26_201042) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status", default: 0
     t.float "sale_amount", default: 0.0
+    t.float "original_sale_amount", default: 0.0
     t.index ["customer_id"], name: "index_visits_on_customer_id"
     t.index ["route_id"], name: "index_visits_on_route_id"
   end

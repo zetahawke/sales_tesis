@@ -1,4 +1,7 @@
 h5
+  strong Visita: 
+  = @visit.id
+p
   strong Cliente: 
   = @visit.customer&.name
 p
@@ -6,28 +9,46 @@ p
   = @visit.route&.salesman&.name
   |  Route
 p
-  strong Excusa: 
-  = @visit.excuse && @visit.excuse&.reason ? @visit.excuse&.reason[0..50] : 'No aplica'
+  strong
+    | Monto de la venta  
+  small
+    | (menos multa, si aplica): 
+  = number_to_currency(@visit.sale_amount, precision: 0, delimiter: '.')
 p
-  strong Excusa Aceptada: 
-  = @visit.excuse ? (@visit.excuse&.valid_argument&.to_s == 'true' ? 'Sí' : 'No') : 'No aplica'
+  strong
+    | Monto de la venta 
+  small
+    | (original): 
+  = number_to_currency(@visit.original_sale_amount, precision: 0, delimiter: '.')
 
 p
   strong Estado: 
   = I18n.t("visit.statuses.#{@visit.status}")
 
-- if @visit.appointment
+- if @visit.excuse
+  hr/
+  h6 Excusa
   p
-    strong Cita desde: 
+    strong Excusa: 
+    = @visit.excuse && @visit.excuse&.reason ? @visit.excuse&.reason[0..50] : 'No aplica'
+  p
+    strong Excusa Aceptada: 
+    = @visit.excuse ? (@visit.excuse&.valid_argument&.to_s == 'true' ? 'Sí' : 'No') : 'No aplica'
+
+- if @visit.appointment
+  hr/
+  h6 Cita
+  p
+    strong Desde: 
     = @visit.appointment.start_at.strftime('%d-%m-%Y')
   p
-    strong Cita hasta: 
+    strong Hasta: 
     = @visit.appointment.ends_at.strftime('%d-%m-%Y')
   p
-    strong Cita para: 
+    strong Para el: 
     = @visit.appointment.appointed_at.strftime('%d-%m-%Y')
   p
-    strong Cita realizada: 
+    strong Realizada el: 
     = @visit.appointment.realized_at ? @visit.appointment.realized_at.strftime('%d-%m-%Y') : 'Aún no'
   p
     strong Cita dentro de plazo: 
