@@ -8,8 +8,6 @@ table
       th Criterio
       th Criterio value
       th
-      th
-      th
 
   tbody
     - @goals.each do |goal|
@@ -18,10 +16,12 @@ table
         td = goal.type_of_criteria
         td = goal.criteria
         td = goal.criteria_value
-        td = link_to 'Mostrar', admin_goal_path(goal)
-        td = link_to 'Editar', edit_admin_goal_path(goal)
-        td = link_to 'Eliminar', admin_goal_path(goal), data: { confirm: 'Are you sure?' }, method: :delete
+        td
+          .right
+            = link_to 'Mostrar', admin_goal_path(goal), style: 'margin-right: 10px;'
+            = link_to 'Editar', edit_admin_goal_path(goal), style: 'margin-right: 10px;'
+            = link_to 'Eliminar', admin_goal_path(goal), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'Nuevo Meta', new_admin_goal_path, class: 'btn btn-primary'
+= link_to 'Nuevo Meta', new_admin_goal_path, class: 'btn btn-primary right'

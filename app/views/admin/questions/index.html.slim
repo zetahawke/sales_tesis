@@ -7,8 +7,6 @@ table
       th Description
       th Criterios de Aceptación
       th
-      th
-      th
 
   tbody
     - @questions.each do |question|
@@ -16,10 +14,12 @@ table
         td = question.name
         td = question.description
         td = question.acceptance_criterias
-        td = link_to 'Mostrar', admin_question_path(question)
-        td = link_to 'Editar', edit_admin_question_path(question)
-        td = link_to 'Eliminar', admin_question_path(question), data: { confirm: 'Are you sure?' }, method: :delete
+        td
+          .right
+            = link_to 'Mostrar', admin_question_path(question), style: 'margin-right: 10px;'
+            = link_to 'Editar', edit_admin_question_path(question), style: 'margin-right: 10px;'
+            = link_to 'Eliminar', admin_question_path(question), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'Nuevo Pregunta', new_admin_question_path, class: 'btn btn-primary'
+= link_to 'Nuevo Pregunta', new_admin_question_path, class: 'btn btn-primary right'

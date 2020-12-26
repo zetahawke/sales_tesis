@@ -8,6 +8,5 @@ p
   strong Criterios de Aceptación: 
   = @question.acceptance_criterias
 
-=> link_to 'Editar', edit_admin_question_path(@question), class: 'btn btn-primary'
-'|
-=< link_to 'Back', admin_questions_path, class: 'btn btn-default'
+= link_to 'Editar', edit_admin_question_path(@question), class: 'btn btn-primary right'
+= link_to 'Back', admin_questions_path, class: 'btn btn-default'

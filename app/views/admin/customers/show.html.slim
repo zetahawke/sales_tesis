@@ -14,8 +14,6 @@ p
   strong Acceso privado: 
   = link_to 'Link', "/public/customers/visits?token=#{@customer.private_token}", target: '_blank'
 
-= link_to 'Editar', edit_admin_customer_path(@customer), class: 'btn btn-primary'
-'|
-= link_to 'Crear token', admin_customer_create_token_path(@customer), class: 'btn btn-primary'
-'|
+= link_to 'Editar', edit_admin_customer_path(@customer), class: 'btn btn-primary right'
+= link_to 'Crear token', admin_customer_create_token_path(@customer), class: 'btn btn-primary right', style: 'margin-right: 10px;'
 = link_to 'Back', admin_customers_path, class: 'btn btn-default'

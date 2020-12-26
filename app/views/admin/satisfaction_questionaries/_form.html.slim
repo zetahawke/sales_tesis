@@ -19,5 +19,5 @@
         = "<option value='#{q.id}' #{'selected' if @satisfaction_questionary.questions && @satisfaction_questionary.questions.include?(q.id)}>#{q.name}</option>".html_safe
     = f.label :questions
   .actions
-    = f.submit 'Guardar', class: 'btn btn-primary'
+    = f.submit 'Guardar', class: 'btn btn-primary right'
     = link_to 'Back', admin_satisfaction_questionaries_path, class: 'btn btn-default'

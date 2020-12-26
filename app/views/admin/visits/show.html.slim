@@ -12,6 +12,5 @@ p
   strong Aceptada: 
   = @visit.excuse ? (@visit.excuse&.valid_argument&.to_s == 'true' ? 'Sí' : 'No') : 'No aplica'
 
-=> link_to 'Editar', edit_admin_visit_path(@visit), class: 'btn btn-primary'
-'|
-=< link_to 'Back', admin_visits_path, class: 'btn btn-default'
+= link_to 'Editar', edit_admin_visit_path(@visit), class: 'btn btn-primary right'
+= link_to 'Back', admin_visits_path, class: 'btn btn-default'

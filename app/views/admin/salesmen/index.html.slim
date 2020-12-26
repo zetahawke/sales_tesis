@@ -32,12 +32,13 @@ span.card-title
               .small-light style="background-color: #{salesman.traffic_light_for(params[:type], params[:date], 'money_goals')}"
           td
             = link_to 'Nueva visita', new_admin_visit_path(salesman_id: salesman.id)
-          td 
-            = link_to 'Mostrar', admin_salesman_path(salesman), style: 'margin-right: 10px;'
-            = link_to 'Editar', edit_admin_salesman_path(salesman), style: 'margin-right: 10px;'
-            = link_to 'Eliminar', admin_salesman_path(salesman), data: { confirm: 'Are you sure?' }, method: :delete
+          td
+            .right 
+              = link_to 'Mostrar', admin_salesman_path(salesman), style: 'margin-right: 10px;'
+              = link_to 'Editar', edit_admin_salesman_path(salesman), style: 'margin-right: 10px;'
+              = link_to 'Eliminar', admin_salesman_path(salesman), data: { confirm: 'Are you sure?' }, method: :delete
 
   br
 
 .card-action
-  = link_to 'Nuevo Vendedor', new_admin_salesman_path, class: 'btn btn-primary'
+  = link_to 'Nuevo Vendedor', new_admin_salesman_path, class: 'btn btn-primary right'

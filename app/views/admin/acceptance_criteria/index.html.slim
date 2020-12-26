@@ -8,8 +8,6 @@ table
       th Criterio value
       th Valor
       th
-      th
-      th
 
   tbody
     - @acceptance_criteria.each do |acceptance_criterium|
@@ -18,10 +16,12 @@ table
         td = acceptance_criterium.criteria
         td = acceptance_criterium.criteria_value
         td = acceptance_criterium.hit_value
-        td = link_to 'Mostrar', admin_acceptance_criterium_path(acceptance_criterium)
-        td = link_to 'Editar', edit_admin_acceptance_criterium_path(acceptance_criterium)
-        td = link_to 'Eliminar', admin_acceptance_criterium_path(acceptance_criterium), data: { confirm: 'Are you sure?' }, method: :delete
+        td
+          .right
+            = link_to 'Mostrar', admin_acceptance_criterium_path(acceptance_criterium), style: 'margin-right: 10px;'
+            = link_to 'Editar', edit_admin_acceptance_criterium_path(acceptance_criterium), style: 'margin-right: 10px;'
+            = link_to 'Eliminar', admin_acceptance_criterium_path(acceptance_criterium), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'Nuevo Criterio de Aceptación', new_admin_acceptance_criterium_path, class: 'btn btn-primary'
+= link_to 'Nuevo Criterio de Aceptación', new_admin_acceptance_criterium_path, class: 'btn btn-primary right'

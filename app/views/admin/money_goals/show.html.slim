@@ -19,6 +19,5 @@ p
   strong Periodo: 
   = @money_goal.period
 
-=> link_to 'Edit', edit_admin_money_goal_path(@money_goal)
-'|
-=< link_to 'Back', admin_money_goals_path
+= link_to 'Edit', edit_admin_money_goal_path(@money_goal)
+= link_to 'Back', admin_money_goals_path

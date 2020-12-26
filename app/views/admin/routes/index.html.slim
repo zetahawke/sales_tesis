@@ -5,17 +5,17 @@ table
     tr
       th Vendedor
       th
-      th
-      th
 
   tbody
     - @routes.each do |route|
       tr
         td = route.salesman&.name
-        td = link_to 'Mostrar', admin_route_path(route)
-        td = link_to 'Editar', edit_admin_route_path(route)
-        td = link_to 'Eliminar', admin_route_path(route), data: { confirm: 'Are you sure?' }, method: :delete
+        td
+          .right
+            = link_to 'Mostrar', admin_route_path(route), style: 'margin-right: 10px;'
+            = link_to 'Editar', edit_admin_route_path(route), style: 'margin-right: 10px;'
+            = link_to 'Eliminar', admin_route_path(route), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'Nuevo Route', new_admin_route_path, class: 'btn btn-primary'
+= link_to 'Nuevo Route', new_admin_route_path, class: 'btn btn-primary right'

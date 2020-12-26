@@ -7,8 +7,6 @@ table
       th Vendedor
       th Tipo de criterio
       th
-      th
-      th
 
   tbody
     - @money_goals.each do |money_goal|
@@ -16,9 +14,11 @@ table
         td = number_to_currency(money_goal.amount, precision: 0, delimiter: '.')
         td = money_goal.salesman.name
         td = money_goal.type_of_criteria
-        td = link_to 'Mostrar', admin_money_goal_path(money_goal)
-        td = link_to 'Editar', edit_admin_money_goal_path(money_goal)
-        td = link_to 'Eliminar', admin_money_goal_path(money_goal), data: { confirm: 'Are you sure?' }, method: :delete
+        td
+          .right
+            = link_to 'Mostrar', admin_money_goal_path(money_goal), style: 'margin-right: 10px;'
+            = link_to 'Editar', edit_admin_money_goal_path(money_goal), style: 'margin-right: 10px;'
+            = link_to 'Eliminar', admin_money_goal_path(money_goal), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 

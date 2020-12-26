@@ -7,8 +7,6 @@ table
       th Dni
       th Email
       th
-      th
-      th
 
   tbody
     - @customers.each do |customer|
@@ -16,10 +14,12 @@ table
         td = customer.name
         td = customer.dni
         td = customer.email
-        td = link_to 'Mostrar', admin_customer_path(customer)
-        td = link_to 'Editar', edit_admin_customer_path(customer)
-        td = link_to 'Eliminar', admin_customer_path(customer), data: { confirm: 'Are you sure?' }, method: :delete
+        td
+          .right
+            = link_to 'Mostrar', admin_customer_path(customer), style: 'margin-right: 10px;'
+            = link_to 'Editar', edit_admin_customer_path(customer), style: 'margin-right: 10px;'
+            = link_to 'Eliminar', admin_customer_path(customer), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'Nuevo Cliente', new_admin_customer_path, class: 'btn btn-primary'
+= link_to 'Nuevo Cliente', new_admin_customer_path, class: 'btn btn-primary right'

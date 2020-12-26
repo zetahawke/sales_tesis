@@ -8,8 +8,6 @@ table
       th Token
       th Encuesta
       th
-      th
-      th
 
   tbody
     - @satisfaction_questionaries.each do |satisfaction_questionary|
@@ -20,10 +18,12 @@ table
         td = satisfaction_questionary.public_token
         td
           = link_to 'Link', satisfaction_questionary.public_url
-        td = link_to 'Mostrar', admin_satisfaction_questionary_path(satisfaction_questionary)
-        td = link_to 'Editar', edit_admin_satisfaction_questionary_path(satisfaction_questionary)
-        td = link_to 'Eliminar', admin_satisfaction_questionary_path(satisfaction_questionary), data: { confirm: 'Are you sure?' }, method: :delete
+        td
+          .right
+            = link_to 'Mostrar', admin_satisfaction_questionary_path(satisfaction_questionary), style: 'margin-right: 10px;'
+            = link_to 'Editar', edit_admin_satisfaction_questionary_path(satisfaction_questionary), style: 'margin-right: 10px;'
+            = link_to 'Eliminar', admin_satisfaction_questionary_path(satisfaction_questionary), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'Asignar cuestionarios masivos', new_massive_admin_satisfaction_questionaries_path, class: 'btn btn-primary'
+= link_to 'Asignar cuestionarios masivos', new_massive_admin_satisfaction_questionaries_path, class: 'btn btn-primary right'

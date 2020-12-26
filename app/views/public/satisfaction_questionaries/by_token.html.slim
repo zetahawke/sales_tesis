@@ -34,6 +34,6 @@ h5
       input type='hidden' name='answer[question_id]' value="#{@answer.question.id}"
     .row
       .actions
-        = f.submit 'Enviar', class: 'btn btn-primary'
+        = f.submit 'Enviar', class: 'btn btn-primary right'
         - if @step > 0
           = link_to 'Back', public_sq_path(public_token: params[:public_token], step: @step - 1), class: 'btn btn-default'

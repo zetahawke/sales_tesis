@@ -16,5 +16,5 @@
     = f.select :type_of_criteria, options_for_select(%w(daily monthly yearly), @money_goal.type_of_criteria)
     = f.label :type_of_criteria
   .actions
-    = f.submit 'Guardar', class: 'btn btn-primary'
+    = f.submit 'Guardar', class: 'btn btn-primary right'
     = link_to 'Back', admin_money_goals_path, class: 'btn btn-default'

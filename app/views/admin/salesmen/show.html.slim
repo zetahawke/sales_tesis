@@ -39,8 +39,6 @@ p
   strong Ventas acumuladas a del periodo: 
   = number_to_currency(@salesman.amount_of_sales(params[:type], params[:date]), precision: 0, delimiter: '.')
 .card-action
-  = link_to 'Editar', edit_admin_salesman_path(@salesman), class: 'btn btn-primary'
-  '|
-  = link_to 'Crear token', admin_salesman_create_token_path(@salesman), class: 'btn btn-primary'
-  '|
+  = link_to 'Editar', edit_admin_salesman_path(@salesman), class: 'btn btn-primary right'
+  = link_to 'Crear token', admin_salesman_create_token_path(@salesman), class: 'btn btn-primary right', style: 'margin-right: 10px;'
   = link_to 'Back', admin_salesmen_path, class: 'btn btn-default'
