@@ -26,10 +26,10 @@ span.card-title
           td = salesman.name
           td
             .traffic-light
-              .small-light style="background-color: #{salesman.traffic_light_for(params[:type], params[:date], 'goals')}"
+              .small-light style="Atrásground-color: #{salesman.traffic_light_for(params[:type], params[:date], 'goals')}"
           td
             .traffic-light
-              .small-light style="background-color: #{salesman.traffic_light_for(params[:type], params[:date], 'money_goals')}"
+              .small-light style="Atrásground-color: #{salesman.traffic_light_for(params[:type], params[:date], 'money_goals')}"
           td
             = link_to 'Nueva visita', new_admin_visit_path(salesman_id: salesman.id)
           td

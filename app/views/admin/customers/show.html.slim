@@ -1,5 +1,5 @@
 h5
-  strong Name: 
+  strong Nombre: 
   = @customer.name
 p
   strong Dni: 
@@ -19,4 +19,4 @@ p
 
 = link_to 'Editar', edit_admin_customer_path(@customer), class: 'btn btn-primary right'
 = link_to 'Crear token', admin_customer_create_token_path(@customer), class: 'btn btn-primary right', style: 'margin-right: 10px;'
-= link_to 'Back', admin_customers_path, class: 'btn btn-default'
+= link_to 'Atrás', admin_customers_path, class: 'btn btn-default'

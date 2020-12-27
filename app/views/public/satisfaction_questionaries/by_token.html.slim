@@ -36,4 +36,4 @@ h5
       .actions
         = f.submit 'Enviar', class: 'btn btn-primary right'
         - if @step > 0
-          = link_to 'Back', public_sq_path(public_token: params[:public_token], step: @step - 1), class: 'btn btn-default'
+          = link_to 'Atrás', public_sq_path(public_token: params[:public_token], step: @step - 1), class: 'btn btn-default'

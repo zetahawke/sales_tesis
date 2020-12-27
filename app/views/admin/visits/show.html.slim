@@ -5,9 +5,9 @@ p
   strong Cliente: 
   = @visit.customer&.name
 p
-  strong Route: 
+  strong Ruta: 
   = @visit.route&.salesman&.name
-  |  Route
+  |  Ruta
 p
   strong
     | Monto de la venta  
@@ -55,4 +55,4 @@ p
     = I18n.t("visit.#{@visit.appointment.accomplished}")
 
 = link_to 'Editar', edit_admin_visit_path(@visit), class: 'btn btn-primary right'
-= link_to 'Back', admin_visits_path, class: 'btn btn-default'
+= link_to 'Atrás', admin_visits_path, class: 'btn btn-default'

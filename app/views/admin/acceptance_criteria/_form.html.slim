@@ -7,17 +7,17 @@
           li = message
 
   .input-field
-    = f.label :name
+    = f.label :name, 'Nombre'
     = f.text_field :name
   .input-field
-    = f.label :criteria
+    = f.label :criteria, 'Criterio'
     = f.text_field :criteria
   .input-field
-    = f.label :criteria_value
+    = f.label :criteria_value, 'Valor a mostrar'
     = f.text_field :criteria_value
   .input-field
-    = f.label :hit_value
+    = f.label :hit_value, 'Valor a sumar'
     = f.number_field :hit_value
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary right'
-    = link_to 'Back', admin_acceptance_criteria_path, class: 'btn btn-default'
+    = link_to 'Atrás', admin_acceptance_criteria_path, class: 'btn btn-default'

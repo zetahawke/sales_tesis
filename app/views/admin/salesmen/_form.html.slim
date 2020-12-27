@@ -7,12 +7,12 @@
           li = message
 
   .input-field
-    = f.label :name
+    = f.label :name, 'Nombre'
     = f.text_field :name
 
   .input-field
-    = f.label :email
+    = f.label :email, 'Email'
     = f.text_field :email
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary right'
-    = link_to 'Back', admin_salesmen_path, class: 'btn btn-default'
+    = link_to 'Atrás', admin_salesmen_path, class: 'btn btn-default'

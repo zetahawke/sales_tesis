@@ -8,26 +8,26 @@
 
   .input-field
     = f.select :customer_id, options_for_select(Customer.all.pluck(:name, :id), @visit.customer_id)
-    = f.label :customer
+    = f.label :customer, 'Cliente'
   .input-field
     = select_tag 'salesman_id', options_for_select(Salesman.all.pluck(:name, :id), @visit.route.try(:salesman).try(:id))
     label for='salesman_id' Ruta del vendedor
   .input-field
     = f.number_field :sale_amount
-    = f.label :sale_amount, class: 'active'
+    = f.label :sale_amount, 'Monto de venta', class: 'active'
   .input-field
     = f.select :status, options_for_select(Visit.statuses.keys.map { |status_key| [I18n.t("visit.statuses.#{status_key}"), status_key] }, @visit.status)
-    = f.label :status
+    = f.label :status, 'Estado'
   = f.fields_for :appointment do |appo_f|
     .input-field
       = appo_f.datetime_field :appointed_at, style: 'max-width: 300px;'
-      = appo_f.label :appointed_at, class: 'active'
+      = appo_f.label :appointed_at, 'Programado para', class: 'active'
 
     = appo_f.hidden_field :visit_id, value: @visit.id
 
   = f.fields_for :excuse do |excuse_f|
     .input-field
-      = excuse_f.label :valid_argument
+      = excuse_f.label :valid_argument, 'Argumento válido?'
         = excuse_f.check_box :valid_argument
         span Excusa válida?
 
@@ -38,4 +38,4 @@
 
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary right'
-    = link_to 'Back', admin_visits_path, class: 'btn btn-default'
+    = link_to 'Atrás', admin_visits_path, class: 'btn btn-default'

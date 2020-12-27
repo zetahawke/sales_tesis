@@ -1,18 +1,18 @@
 span.card-title
   .row
     h5.left
-      strong Name: 
+      strong Nombre: 
       = @salesman.name
     div.right
       span.fs-10
         | Ventas
       .traffic-light
-        .medium-light style="background-color: #{@sales_traffic_light_color}"
+        .medium-light style="Atrásground-color: #{@sales_traffic_light_color}"
     div.right.mr-10
       span.fs-10
         | Encuestas
       .traffic-light
-        .medium-light style="background-color: #{@traffic_light_color}"
+        .medium-light style="Atrásground-color: #{@traffic_light_color}"
 .card-content
   br/
   = render 'graphic'
@@ -41,4 +41,4 @@ p
 .card-action
   = link_to 'Editar', edit_admin_salesman_path(@salesman), class: 'btn btn-primary right'
   = link_to 'Crear token', admin_salesman_create_token_path(@salesman), class: 'btn btn-primary right', style: 'margin-right: 10px;'
-  = link_to 'Back', admin_salesmen_path, class: 'btn btn-default'
+  = link_to 'Atrás', admin_salesmen_path, class: 'btn btn-default'

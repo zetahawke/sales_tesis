@@ -8,7 +8,7 @@
   br/
   .input-field
     = f.select :status, options_for_select([['Completada', 'accomplished']], @visit.status)
-    = f.label :status
+    = f.label :status, 'Estado'
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary right'
-    = link_to 'Back', public_customers_visits_path(token: params[:token]), class: 'btn btn-default'
+    = link_to 'Atrás', public_customers_visits_path(token: params[:token]), class: 'btn btn-default'

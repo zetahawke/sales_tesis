@@ -7,17 +7,17 @@
           li = message
 
   .input-field
-    = f.label :name
+    = f.label :name, 'Nombre'
     = f.text_field :name
   .input-field
-    = f.label :description
+    = f.label :description, 'Descripción'
     = f.text_field :description
   .input-field
     select multiple='' name='question[acceptance_criterias][]' id='question_acceptance_criterias'
       option value="" disabled='disabled' Elija criterios
       - AcceptanceCriterium.all.each do |ac|
         = "<option value='#{ac.id}' #{'selected' if @question.acceptance_criterias && @question.acceptance_criterias.include?(ac.id)}>#{ac.name}</option>".html_safe
-    = f.label :acceptance_criterias
+    = f.label :acceptance_criterias, 'Criterios de aceptación'
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary right'
-    = link_to 'Back', admin_questions_path, class: 'btn btn-default'
+    = link_to 'Atrás', admin_questions_path, class: 'btn btn-default'

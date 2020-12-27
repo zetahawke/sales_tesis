@@ -11,13 +11,13 @@
       option value="" disabled='disabled' Elija vendedores
       - Salesman.all.each do |s|
         = "<option value='#{s.id}'>#{s.name}</option>".html_safe
-    = f.label :salesman
+    = f.label :salesman, 'Vendedor'
   .input-field
     select multiple='' name='satisfaction_questionary[questions][]' id='satisfaction_questionary_questions'
       option value="" disabled='disabled' Elija criterios
       - Question.all.each do |q|
         = "<option value='#{q.id}' #{'selected' if @satisfaction_questionary.questions && @satisfaction_questionary.questions.include?(q.id)}>#{q.name}</option>".html_safe
-    = f.label :questions
+    = f.label :questions, 'Preguntas'
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary right'
-    = link_to 'Back', admin_satisfaction_questionaries_path, class: 'btn btn-default'
+    = link_to 'Atrás', admin_satisfaction_questionaries_path, class: 'btn btn-default'
