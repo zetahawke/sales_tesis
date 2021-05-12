@@ -12,7 +12,7 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "chartkick": "^3.2.0",
     "core-js": "^3.6.5",
     "materialize-css": "^1.0.0",
